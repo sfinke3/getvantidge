@@ -4,176 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playground Case Study</title>
-  <meta name="description" content="How I ran diligence for Playground's sale to a public Fortune 500 company with no banker.">
+  <meta name="description" content="How I ran diligence for Playground's sale with no banker.">
   <meta property="og:title" content="Vantidge">
-  <meta property="og:description" content="Finance for startups that don't have a finance person yet.">
+  <meta property="og:description" content="I help startups that don't have a finance person yet.">
   <meta property="og:url" content="https://getvantidge.com">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85' font-family='Georgia,serif'>V</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <nav class="nav">
-    <a class="nav-name" href="/">Vantidge</a>
-    <div class="nav-links">
-      <a class="on" href="/case-study/">Case study</a>
+<div class="page">
+
+  <header>
+    <a class="name" href="/">Vantidge</a>
+    <nav>
+      <a href="/case-study/" aria-current="page">Case study</a>
       <a href="/see-your-company/">See your company</a>
-      <a class="hide-sm" href="mailto:sophie@getvantidge.com">Email</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
+
   <main>
+    <h1>Playground</h1>
 
-    <section class="cs-hero">
-      <p class="eyebrow">Playground &middot; 2026</p>
-      <h1>Playground acquisition diligence</h1>
-      <p class="cs-lede">Playground was acquired in September 2026 by a public Fortune 500 company. The buyer had three separate consulting firms working on diligence. On our side, it was just me. We did not hire a banker, and the deal team was the three founders and me. Nobody else at the company knew until it was done.</p>
-      <p class="cs-lede" style="margin-top:14px">Playground also did not have a finance person when I started. I built the operating model and the pre-diligence materials from scratch. When the buyer sent their request list, every answer went back with a file I built during diligence.</p>
-      <div class="cs-stats">
-        <div class="cs-stat"><b>439</b><span>requests answered</span></div>
-        <div class="cs-stat"><b>714</b><span>files handed over</span></div>
-        <div class="cs-stat"><b>27</b><span>diligence calls</span></div>
-        <div class="cs-stat"><b>4 weeks</b><span>from request list to close</span></div>
-      </div>
-      <p class="cs-note">The screenshots below are redacted. I blacked out the numbers and removed everyone's name except mine.</p>
-    </section>
+    <p>Playground was acquired in September 2026 by a public Fortune 500 company. The buyer had three separate consulting firms working on diligence. We did not hire a banker, and the deal team was the three founders and me. Nobody else at the company knew until it was done.</p>
 
-    <section class="cs-section">
-      <h2><span class="section-number">01</span> The deal tracker</h2>
-      <div class="cs-intro">
-        <div>
-          <p>The buyer sent over 400 requests in a spreadsheet and stood up the VDR. I built an app to track them internally. Each request had an owner, a status, and a due date, and the app synced with the data room every night.</p>
-          <p>I also connected Claude to the tracker. It could read a request, draft an answer, and attach a file. I checked it before anything was posted.</p>
-        </div>
-        <div>
-          <p>The app had a page for the merger agreement too. Each clause had a risk level and a suggested response, and I sent our comments to counsel from there.</p>
-          <p>The buyer's consultants' written questions had their own queue. We drafted, reviewed, and signed off on every answer in one place.</p>
-        </div>
-      </div>
-      <figure>
-        <img src="img/tracker-dashboard.jpg" alt="Deal tracker dashboard" loading="lazy">
-        <figcaption>Dashboard on the day we closed.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/tracker-requests.jpg" alt="Request list" loading="lazy">
-        <figcaption>Request list.</figcaption>
-      </figure>
-      <div class="cs-grid">
-        <figure>
-          <img src="img/tracker-merger.jpg" alt="Merger agreement review" loading="lazy">
-          <figcaption>Merger agreement review. Clause text is blurred.</figcaption>
-        </figure>
-        <figure>
-          <img src="img/tracker-shortanswers.jpg" alt="Accountants' question queue" loading="lazy">
-          <figcaption>Accountants' questions. Answers are blurred.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <p>Playground also did not have a finance person when I started. I built the operating model and the pre-diligence materials from scratch. When the buyer sent their request list, every answer went back with a file I built during diligence. In the end that was 439 requests, 714 files, and 27 calls.</p>
 
-    <section class="cs-section">
-      <h2><span class="section-number">02</span> The Pooh Report</h2>
-      <div class="cs-intro">
-        <div>
-          <p>I sent the deal team an email every night at 9pm. It had the day's progress, what was overdue, and a leaderboard. Claude wrote a short &ldquo;gossip column&rdquo; from what changed in the tracker that day.</p>
-        </div>
-        <div>
-          <p>Each day gave us a "happiness meter" from the perspective of the buyer's diligence lead (an estimate). It went down when items were overdue or reopened. I changed his LinkedIn picture to have twelve different facial expressions based on the ranking. Don't worry, we sent it to him after the deal, and he loved it.</p>
-        </div>
-      </div>
-      <div class="cs-grid">
-        <figure>
-          <img src="img/report-t12.jpg" alt="Nightly report twelve days before signing" loading="lazy">
-          <figcaption>Twelve days before signing.</figcaption>
-        </figure>
-        <figure>
-          <img src="img/report-finale-reel.jpg" alt="Final nightly report" loading="lazy">
-          <figcaption>The last one, sent the night we closed.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <p class="muted">The screenshots are redacted. I blacked out the numbers and removed everyone's name except mine.</p>
 
-    <section class="cs-section">
-      <h2><span class="section-number">03</span> Burn and runway</h2>
-      <div class="cs-intro">
-        <div>
-          <p>Alongside the deal I was asked a simple question: if this doesn't go through, how long is our runway and what should we cut?</p>
-          <p>The only true way the team tracked burn was looking at the bank account balance each month. There was no granular deep dive.</p>
-        </div>
-        <div>
-          <p>I pulled the raw data from each source and tied it to the books. Then I built a dashboard for burn and runway on top of it.</p>
-          <p>It has a cash forecast that I tested against past months. It also has a cut board that shows when each cut would actually hit the bank.</p>
-        </div>
-      </div>
-      <figure>
-        <img src="img/burn-forecast.jpg" alt="Cash forecast" loading="lazy">
-        <figcaption>Cash forecast.</figcaption>
-      </figure>
-      <div class="cs-grid">
-        <figure>
-          <img src="img/burn-cutboard.jpg" alt="Cut board" loading="lazy">
-          <figcaption>Cut board.</figcaption>
-        </figure>
-        <figure>
-          <img src="img/burn-cost.jpg" alt="Revenue and cost breakdown" loading="lazy">
-          <figcaption>Revenue and cost breakdown.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <h2>The deal tracker</h2>
+    <p>The buyer sent over 400 requests in a spreadsheet and stood up the VDR. I built an app to track them internally. Each request had an owner, a status, and a due date, and the app synced with the data room every night.</p>
+    <p>I also connected Claude to the tracker. It could read a request, draft an answer, and attach a file. I checked it before anything was posted.</p>
+    <figure>
+      <img src="img/tracker-dashboard.jpg" alt="Dashboard on the day we closed." loading="lazy">
+      <figcaption>Dashboard on the day we closed.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/tracker-requests.jpg" alt="Request list." loading="lazy">
+      <figcaption>Request list.</figcaption>
+    </figure>
 
-    <section class="cs-section">
-      <h2><span class="section-number">04</span> The operating model</h2>
-      <div class="cs-intro">
-        <div>
-          <p class="cs-sub">For the buyer: Excel</p>
-          <p>The buyer's first ask was a financial model and a forecast. I built one in Excel from scratch, since nothing existed since the Series A docs. Revenue starts from the number of active schools and builds up to payments and SaaS. Headcount and opex come after that.</p>
-          <p>Every line ties back to the general ledger. A script builds the whole workbook, and it checks every tie-out before I send a new version.</p>
-        </div>
-        <div>
-          <p class="cs-sub">For the team: a dashboard</p>
-          <p>The internal team did not speak Excel. They kept asking for fewer spreadsheet-style views, so I built them a dashboard on top of the same model.</p>
-          <p>It runs the same formulas in the browser. Anyone on the team (with Google Auth access) could move a lever and see what happened to cash and runway without opening a workbook.</p>
-        </div>
-      </div>
-      <figure>
-        <img src="img/opmodel-dash.jpg" alt="Operating model dashboard" loading="lazy">
-        <figcaption>The team dashboard. Cash, runway, and the growth levers on one page.</figcaption>
-      </figure>
-      <div class="cs-grid">
-        <figure>
-          <img src="img/opmodel-pl.jpg" alt="Financial model sent to the buyer, P&amp;L tab" loading="lazy">
-          <figcaption>The financial model the buyer got, with every tab along the bottom. Values replaced with grey bars.</figcaption>
-        </figure>
-        <figure>
-          <img src="img/opmodel-capacity.jpg" alt="Forecast model sent to the buyer, sales capacity tab" loading="lazy">
-          <figcaption>The forecast that went with it. New ARR built bottom up from reps, ramp, and quota.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <p>The app had a page for the merger agreement too. Each clause had a risk level and a suggested response, and I sent our comments to counsel from there. The buyer's consultants' written questions had their own queue. We drafted, reviewed, and signed off on every answer in one place.</p>
+    <figure><div class="pair">
+      <div><img src="img/tracker-merger.jpg" alt="Merger agreement review. Clause text is blurred." loading="lazy"><figcaption>Merger agreement review. Clause text is blurred.</figcaption></div>
+      <div><img src="img/tracker-shortanswers.jpg" alt="Consultants' questions. Answers are blurred." loading="lazy"><figcaption>Consultants' questions. Answers are blurred.</figcaption></div>
+    </div></figure>
 
-    <section class="cs-section">
-      <h2><span class="section-number">05</span> What went into the data room</h2>
-      <p class="cs-note" style="font-size:0.95rem;color:var(--text-secondary);margin:0 0 20px">Every request went back with something I built during diligence. These were the bigger ones.</p>
-      <div class="cs-deliv">
-        <div><strong>Quality of earnings pack</strong>Revenue and ARR by customer, plus a key that matches customers across every system.</div>
-        <div><strong>Payments databook</strong>Payment volume and revenue by location and card type, tied to the fee ledger.</div>
-        <div><strong>Financial statements</strong>A P&amp;L on a Stripe basis and a deferred revenue bridge. I also wrote up where they differ from GAAP.</div>
-        <div><strong>Management answers</strong>Written answers to the accountants' full question list.</div>
-        <div><strong>Cost build</strong>A detailed cost build by function.</div>
-        <div><strong>Tax and legal</strong>Sales tax exposure by state and the request lists for our CPA and counsel.</div>
-      </div>
-    </section>
+    <h2>The Pooh Report</h2>
+    <p>I sent the deal team an email every night at 9pm. It had the day's progress, what was overdue, and a leaderboard. Claude wrote a short &ldquo;gossip column&rdquo; from what changed in the tracker that day.</p>
+    <p>Each day gave us a &ldquo;happiness meter&rdquo; from the perspective of the buyer's diligence lead (an estimate). It went down when items were overdue or reopened. I changed his LinkedIn picture to have twelve different facial expressions based on the ranking. Don't worry, we sent it to him after the deal, and he loved it.</p>
+    <figure><div class="pair">
+      <div><img src="img/report-t12.jpg" alt="Twelve days before signing." loading="lazy"><figcaption>Twelve days before signing.</figcaption></div>
+      <div><img src="img/report-finale-reel.jpg" alt="The last one, sent the night we closed." loading="lazy"><figcaption>The last one, sent the night we closed.</figcaption></div>
+    </div></figure>
 
-    <footer>
-      <div>
-        <p class="footer-heading">Selling or raising without a banker?</p>
-        <div class="footer-contact">
-          <a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a>
-          <a href="/see-your-company/">See your company</a>
-        </div>
-      </div>
-      <p class="signoff">Yes, the diligence lead saw all twelve of his faces. He loved it.</p>
-    </footer>
+    <h2>Burn and runway</h2>
+    <p>Alongside the deal I was asked a simple question. If this doesn't go through, how long is our runway and what should we cut?</p>
+    <p>The only way the team tracked burn was looking at the bank balance each month. I pulled the raw data from each source and tied it to the books. Then I built a dashboard for burn and runway on top of it. It has a cash forecast that I tested against past months, and a cut board that shows when each cut would actually hit the bank.</p>
+    <figure>
+      <img src="img/burn-forecast.jpg" alt="Cash forecast." loading="lazy">
+      <figcaption>Cash forecast.</figcaption>
+    </figure>
+    <figure><div class="pair">
+      <div><img src="img/burn-cutboard.jpg" alt="Cut board." loading="lazy"><figcaption>Cut board.</figcaption></div>
+      <div><img src="img/burn-cost.jpg" alt="Revenue and cost breakdown." loading="lazy"><figcaption>Revenue and cost breakdown.</figcaption></div>
+    </div></figure>
+
+    <h2>The operating model</h2>
+    <p>The buyer's first ask was a financial model and a forecast. I built one in Excel from scratch, since nothing existed since the Series A docs. Revenue starts from the number of active schools and builds up to payments and SaaS. Headcount and opex come after that. Every line ties back to the general ledger, and a script checks every tie-out before a new version goes out.</p>
+    <p>The internal team did not speak Excel. They kept asking for fewer spreadsheet-style views, so I built them a dashboard on the same model. Anyone on the team could move a lever and see what happened to cash and runway without opening a workbook.</p>
+    <figure>
+      <img src="img/opmodel-dash.jpg" alt="The team dashboard." loading="lazy">
+      <figcaption>The team dashboard.</figcaption>
+    </figure>
+    <figure><div class="pair">
+      <div><img src="img/opmodel-pl.jpg" alt="The financial model the buyer got. Values replaced with grey bars." loading="lazy"><figcaption>The financial model the buyer got. Values replaced with grey bars.</figcaption></div>
+      <div><img src="img/opmodel-capacity.jpg" alt="The forecast that went with it, built up from reps, ramp, and quota." loading="lazy"><figcaption>The forecast that went with it, built up from reps, ramp, and quota.</figcaption></div>
+    </div></figure>
+
+    <h2>What went into the data room</h2>
+    <p>Every request went back with something I built during diligence. These were the bigger ones.</p>
+    <ul class="plain">
+      <li>A quality of earnings pack with revenue and ARR by customer, and a key that matches customers across every system.</li>
+      <li>A payments databook by location and card type, tied to the fee ledger.</li>
+      <li>A P&amp;L on a Stripe basis and a deferred revenue bridge, with a write-up of where they differ from GAAP.</li>
+      <li>Written answers to the consultants' full question list.</li>
+      <li>A cost build by function.</li>
+      <li>Sales tax exposure by state, and the request lists for our CPA and counsel.</li>
+    </ul>
+
+    <hr>
+    <p>If you're heading into a raise or a sale without a finance person, <a href="mailto:sophie@getvantidge.com">email me</a>.</p>
   </main>
+
+  <footer>Sophie Finke &middot; <a href="https://sophiefinke.com">sophiefinke.com</a></footer>
+
+</div>
 </body>
 </html>
