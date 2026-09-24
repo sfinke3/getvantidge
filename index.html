@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vantidge</title>
-  <meta name="description" content="Sophie Finke helps startups that don't have a finance person yet. The model, diligence, and the raise or the sale.">
+  <meta name="description" content="Sophie Finke does finance for startups that don't have a finance person yet. The model, diligence, and the raise or the sale.">
   <meta property="og:title" content="Vantidge">
-  <meta property="og:description" content="I help startups that don't have a finance person yet.">
+  <meta property="og:description" content="I sold a startup to a Fortune 500 company with no banker. Now I do the finance for startups that don't have a finance person yet.">
   <meta property="og:url" content="https://getvantidge.com">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85' font-family='Georgia,serif'>V</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="page">
 
+<div class="wide">
   <header>
     <a class="name" href="/">Vantidge</a>
     <nav>
@@ -24,33 +24,84 @@
       <a href="/see-your-company/">See your company</a>
     </nav>
   </header>
-
-  <main>
-    <h1>Hi, I'm Sophie.</h1>
-
-    <p>I help startups that don't have a finance person yet. I build the model, get you ready for diligence, and run the raise or the sale.</p>
-
-    <p>The last company I did this for was Playground. It sold to a public Fortune 500 company in September. The buyer had three consulting firms on diligence. We didn't hire a banker. Our side was me and the three founders. We answered 439 requests and handed over 714 files. <a href="/case-study/">Here's how.</a></p>
-
-    <figure>
-      <img src="/case-study/img/tracker-dashboard.jpg" alt="Redacted deal tracker dashboard from the Playground sale">
-      <figcaption>The tracker we ran the deal on, the day we closed. Numbers blacked out.</figcaption>
-    </figure>
-
-    <p>Before that I spent three years on an index trading desk at RBC, then went to Wharton. I also build software. If Excel can't do it, I make the tool.</p>
-
-    <h2>What I do</h2>
-    <p>Usually it starts with an operating model tied to your books, plus a dashboard for the people who won't open Excel. When a raise or a sale comes, I set up the data room and work through the request list with you. Most people start with one small project for a fixed fee.</p>
-
-    <h2>If I sent you a password</h2>
-    <p>Sometimes I build a company's finance model before we've ever talked, using only public information. If I emailed you about yours, it's on the <a href="/see-your-company/">See your company</a> page.</p>
-
-    <h2>Email me</h2>
-    <p><a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a>. I'm in New York.</p>
-  </main>
-
-  <footer>Sophie Finke &middot; <a href="https://sophiefinke.com">sophiefinke.com</a></footer>
-
 </div>
+
+<main>
+  <div class="wide hero">
+    <h1>I sold a startup to a Fortune 500 company with no banker.</h1>
+    <p class="lede">Now I do the finance for startups that don't have a finance person yet. The model, the diligence, and the raise or the sale.</p>
+    <p class="tally"><mark>439 requests</mark> <mark>714 files</mark> <mark>27 calls</mark> <mark>0 bankers</mark></p>
+  </div>
+
+  <div class="shots" aria-hidden="true">
+    <img src="/case-study/img/burn-cutboard.jpg" alt="">
+    <img src="/case-study/img/tracker-dashboard.jpg" alt="">
+    <img src="/case-study/img/opmodel-dash.jpg" alt="">
+  </div>
+  <p class="wide shots-cap">From the Playground sale. Numbers blacked out.</p>
+
+  <div class="wide rows">
+    <section class="row">
+      <div class="row-text">
+        <h2>The model</h2>
+        <p>Built from scratch and tied to the books. Nothing had existed since the Series A docs.</p>
+        <p>The founders got a dashboard version because nobody wanted to open Excel.</p>
+      </div>
+      <img src="/case-study/img/opmodel-capacity.jpg" alt="Redacted forecast model" loading="lazy">
+    </section>
+
+    <section class="row">
+      <div class="row-text">
+        <h2>The diligence</h2>
+        <p>The buyer sent 400+ requests in a spreadsheet. I built an app to run them and every answer went back with a file.</p>
+        <p>Three consulting firms on their side. The three founders and me on ours.</p>
+      </div>
+      <img src="/case-study/img/tracker-requests.jpg" alt="Redacted request tracker" loading="lazy">
+    </section>
+
+    <section class="row">
+      <div class="row-text">
+        <h2>The nightly email</h2>
+        <p>At 9pm the deal team got the Pooh Report. Progress, what was overdue, and a leaderboard.</p>
+        <p>It also had a happiness meter for the buyer's diligence lead. I turned his LinkedIn photo into twelve faces to match. We showed him after close and he loved it.</p>
+      </div>
+      <img src="/case-study/img/report-finale-reel.jpg" alt="Redacted nightly report" loading="lazy">
+    </section>
+
+    <p class="more"><a href="/case-study/">Read the whole case study &rarr;</a></p>
+  </div>
+
+  <div class="wide">
+    <section class="door-box" id="door">
+      <div>
+        <h2>Got a password from me?</h2>
+        <p>Sometimes I build a company's finance model before we've talked, from public filings. If I sent you one, open it here.</p>
+        <p class="muted">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
+      </div>
+      <form class="door" id="f" autocomplete="off">
+        <label for="co">Company</label>
+        <input id="co" name="co" required>
+        <label for="pw">Password</label>
+        <input id="pw" name="pw" type="password" required>
+        <button type="submit" id="go">Open</button>
+        <p id="msg" role="status"></p>
+      </form>
+    </section>
+  </div>
+
+  <div class="wide">
+    <section class="bio">
+      <p>I'm Sophie. Three years on RBC's index trading desk, then Wharton, then Playground. I also build software, which is how a deal tracker ends up with a gossip column.</p>
+      <p><a class="btn" href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a></p>
+    </section>
+  </div>
+</main>
+
+<div class="wide">
+  <footer>Sophie Finke &middot; New York &middot; <a href="https://sophiefinke.com">sophiefinke.com</a></footer>
+</div>
+
+<script src="/see-your-company/specs.js"></script>
+<script src="/door.js"></script>
 </body>
 </html>
