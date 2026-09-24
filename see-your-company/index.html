@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>See Your Company</title>
+  <meta name="description" content="If Sophie built a finance spec for your company, it's here.">
+  <meta property="og:title" content="See your company">
+  <meta property="og:description" content="If I built a finance spec for your company, it's here.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85' font-family='Georgia,serif'>V</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <section class="hero">
+    <canvas class="hero-gradient" id="heroGradient"></canvas>
+    <nav class="nav">
+      <a class="nav-name" href="/">Vantidge</a>
+      <div class="nav-links">
+        <a href="/case-study/">Case study</a>
+        <a class="on" href="/see-your-company/">See your company</a>
+        <a class="hide-sm" href="mailto:sophie@getvantidge.com">Email</a>
+      </div>
+    </nav>
+    <main>
+      <div class="syc">
+        <form class="syc-card" id="f" autocomplete="off">
+          <h1>See your company</h1>
+          <p>If I emailed you, I already built your finance function. It's behind this door.</p>
+          <label for="co">Company</label>
+          <input id="co" name="co" placeholder="Your company name" required>
+          <label for="pw">Password</label>
+          <input id="pw" name="pw" type="password" required>
+          <button class="btn" type="submit" id="go">Open it</button>
+          <p class="syc-msg" id="msg" role="status"></p>
+          <p class="syc-help">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <script src="/gradient.js"></script>
+  <script src="specs.js"></script>
+  <script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var enc = new TextEncoder();
+    var norm = function (s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ''); };
+    var unb64 = function (s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); };
+    var b64 = function (buf) { return btoa(String.fromCharCode.apply(null, new Uint8Array(buf))); };
+
+    function mailto(company) {
+      var co = company.trim() || 'my company';
+      var subject = 'The password for ' + co + ', please';
+      var body = 'Hi Sophie,\n\n' +
+        "I'm at " + co + '. I hear you built us a finance function without asking. ' +
+        "That's either very flattering or a little alarming, and I'd like to find out which.\n\n" +
+        'Can I have the password?\n\n' +
+        'For the record, our current finance team is: ______\n\n' +
+        'Best,\n';
+      return 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    function syncAsk() { $('ask').href = mailto($('co').value); }
+    $('co').addEventListener('input', syncAsk);
+    syncAsk();
+
+    function say(text, cls) { var m = $('msg'); m.textContent = text; m.className = 'syc-msg ' + (cls || ''); }
+
+    $('f').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var company = $('co').value.trim(), pw = $('pw').value;
+      if (!window.crypto || !crypto.subtle) { say('Your browser blocked this. Try opening the page over https.', 'bad'); return; }
+      $('go').disabled = true; say('Checking...');
+      try {
+        var id = b64(await crypto.subtle.digest('SHA-256', enc.encode('vantidge:' + norm(company))));
+        var entry = (window.SPECS || {})[id];
+        if (!entry) {
+          say("I haven't built one for " + company + ' yet. Email me and I might.', 'bad');
+          return;
+        }
+        var base = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);
+        var key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: unb64(entry.s), iterations: 150000, hash: 'SHA-256' },
+          base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+        var plain;
+        try {
+          plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(entry.i) }, key, unb64(entry.c));
+        } catch (err) {
+          say("That's not the password. Close though, probably.", 'bad');
+          $('pw').select();
+          return;
+        }
+        var spec = JSON.parse(new TextDecoder().decode(plain));
+        say('Opening ' + spec.name + '...', 'good');
+        location.href = spec.url + '?k=' + encodeURIComponent(spec.k);
+      } catch (err) {
+        say('Something broke on my end. Email me and I will send you the link.', 'bad');
+      } finally {
+        $('go').disabled = false;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
