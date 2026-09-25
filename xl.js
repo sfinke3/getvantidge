@@ -272,6 +272,16 @@
     onShow($('#qc'), function () { if (!qRan) { qRan = true; setTimeout(refreshAll, 400); } });
   }
 
+  /* ---------- autofilter on the About table ---------- */
+  var bf = $('#builtF');
+  if (bf) bf.addEventListener('change', function () {
+    var v = bf.value, n = 0;
+    $$('#builtTbl tbody tr').forEach(function (tr) { var on = !v || tr.dataset.type === v; tr.style.display = on ? '' : 'none'; if (on) n++; });
+    $('#builtN').textContent = n; calc();
+    setFx(v ? '=FILTER(things_built, type = "' + v + '")' : '=COUNTA(things_built)', 'A5'); clicked = Date.now();
+    status(n + ' of ' + $$('#builtTbl tbody tr').length + ' records found', 2500);
+  });
+
   /* ---------- small things ---------- */
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'S')) {
