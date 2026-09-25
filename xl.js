@@ -64,7 +64,8 @@
     }, { threshold: 0.35 });
     o.observe(el);
   };
-  $$('.rv').forEach(function (el) { if (!el.id) onShow(el); });
+  $$('.rv').forEach(function (el) { onShow(el); });
+  setTimeout(function () { $$('.rv').forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('in'); }); }, 1500);
 
   function countUp(el, to, ms) {
     if (still) { el.textContent = fmt(to); return; }
@@ -217,19 +218,50 @@
 
   /* ---------- queries & connections ---------- */
   var qBtn = $('#qRefresh'), qRan = false;
+  var flow = $('#qflow'), NS = 'http://www.w3.org/2000/svg';
+  var SRC = ['Stripe', 'Ledger', 'CRM', 'Bank', 'Payroll', 'Warehouse'];
+  function mk(tag, at, parent) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); (parent || flow).appendChild(e); return e; }
+  if (flow) {
+    var MX = 340, MY = 95;
+    SRC.forEach(function (name, i) {
+      var y = 16 + i * 32, d = 'M92 ' + y + ' C 220 ' + y + ', 240 ' + MY + ', ' + MX + ' ' + MY;
+      var g = mk('g', { 'class': 'qf', 'data-i': i });
+      mk('rect', { x: 2, y: y - 11, width: 88, height: 22, rx: 2, 'class': 'qfs' }, g);
+      mk('text', { x: 46, y: y + 4, 'text-anchor': 'middle', 'class': 'qft' }, g).textContent = name;
+      mk('path', { d: d, 'class': 'qfp' }, g);
+      for (var k = 0; k < 3; k++) {
+        var c = mk('circle', { r: 3.2, 'class': 'qfd' }, g);
+        var am = mk('animateMotion', { dur: '1.2s', repeatCount: 'indefinite', begin: (k * 0.4) + 's', path: d }, c);
+      }
+    });
+    var mg = mk('g', { 'class': 'qfm' });
+    mk('rect', { x: MX, y: MY - 34, width: 112, height: 68, rx: 3, 'class': 'qfmb' }, mg);
+    mk('text', { x: MX + 56, y: MY - 8, 'text-anchor': 'middle', 'class': 'qfmt' }, mg).textContent = 'Model.xlsx';
+    mk('text', { x: MX + 56, y: MY + 16, 'text-anchor': 'middle', 'class': 'qfmn', id: 'qfRows' }).textContent = '0 rows';
+    flow.appendChild(document.getElementById('qfRows'));
+  }
+  var rowsIn = 0;
+  function flowState(i, st) {
+    if (!flow) return;
+    var g = flow.querySelector('.qf[data-i="' + i + '"]'); if (!g) return;
+    g.setAttribute('class', 'qf ' + st);
+  }
+
   function refreshAll() {
     var items = $$('#qc .qlist li'), tie = $('#qtieV');
     if (!items.length) return;
     qBtn.disabled = true; tie.textContent = 'Waiting'; tie.className = '';
     status('Refreshing ' + items.length + ' connections...');
-    items.forEach(function (li) { li.className = ''; li.querySelector('.qs').textContent = 'Queued'; });
+    items.forEach(function (li, i) { li.className = ''; li.querySelector('.qs').textContent = 'Queued'; flowState(i, ''); });
+    rowsIn = 0; var rt = $('#qfRows'); if (rt) rt.textContent = '0 rows'; if (flow) flow.classList.remove('done');
     items.forEach(function (li, i) {
       var d = still ? 0 : 250 + i * 420;
-      setTimeout(function () { li.className = 'run'; li.querySelector('.qs').textContent = 'Refreshing'; }, d);
+      setTimeout(function () { li.className = 'run'; li.querySelector('.qs').textContent = 'Refreshing'; flowState(i, 'run'); }, d);
       setTimeout(function () {
-        li.className = 'ok'; li.querySelector('.qs').textContent = li.dataset.rows + ' rows';
+        li.className = 'ok'; li.querySelector('.qs').textContent = li.dataset.rows + ' rows'; flowState(i, 'ok');
+        rowsIn += +li.dataset.rows.replace(/,/g, ''); var rt = $('#qfRows'); if (rt) rt.textContent = fmt(rowsIn) + ' rows';
         if (i === items.length - 1) {
-          tie.textContent = '14 of 14 at zero'; tie.className = 'good'; qBtn.disabled = false;
+          tie.textContent = '14 of 14 at zero'; tie.className = 'good'; qBtn.disabled = false; if (flow) flow.classList.add('done');
           status('Ready'); setFx('=REFRESH.ALL(sources)  →  14 tie-outs at zero', 'B4'); clicked = Date.now();
         }
       }, d + (still ? 0 : 650));

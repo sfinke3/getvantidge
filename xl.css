@@ -247,3 +247,25 @@ p + p { margin-top: 10px; }
 .qtie { display: flex; justify-content: space-between; font-size: 14px; margin-top: 10px; padding: 6px 8px; background: #f7f7f7; border: 1px solid var(--grid); }
 .qtie b.good { color: #375623; }
 .qtie b.good::before { content: "\2713  "; }
+
+/* data flow */
+.qflow { width: 100%; height: auto; display: block; margin: 2px 0 10px; }
+.qfs { fill: #f3f3f3; stroke: #c8c8c8; }
+.qft { font-size: 12px; fill: #5f6368; font-family: Carlito, Calibri, sans-serif; }
+.qfp { fill: none; stroke: #e0e0e0; stroke-width: 1.5; }
+.qfd { fill: var(--s1); opacity: 0; }
+.qf.run .qfp { stroke: #f0c36d; stroke-dasharray: 5 5; animation: dash .6s linear infinite; }
+.qf.run .qfd { opacity: 1; fill: #d99a00; }
+.qf.run .qfs { fill: #fff8e1; stroke: #e0b43a; }
+.qf.ok .qfp { stroke: #a9d08e; }
+.qf.ok .qfd { opacity: .55; fill: #70ad47; }
+.qf.ok .qfs { fill: #e2efda; stroke: #a9d08e; }
+.qf.ok .qft { fill: #375623; }
+.qfmb { fill: #fff; stroke: var(--green); stroke-width: 1.5; }
+.qfmt { font-size: 14px; font-weight: 700; fill: var(--green); font-family: Carlito, Calibri, sans-serif; }
+.qfmn { font-size: 12px; fill: #5f6368; font-family: Carlito, Calibri, sans-serif; font-variant-numeric: tabular-nums; }
+.qflow.done .qfmb { fill: #e2efda; animation: pop .5s; transform-origin: 396px 95px; transform-box: view-box; }
+@keyframes dash { to { stroke-dashoffset: -10; } }
+@keyframes pop { 40% { transform: scale(1.08); } }
+.qn small { display: none; }
+@media (prefers-reduced-motion: reduce) { .qfd { display: none; } .qf.run .qfp { animation: none; } }

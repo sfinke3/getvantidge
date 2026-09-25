@@ -7,12 +7,20 @@
   <meta name="description" content="Strategic finance without the full-time hire. I build your operating model and run the diligence work when a raise or a sale comes. Run entirely by Sophie Finke.">
   <meta property="og:title" content="Vantidge">
   <meta property="og:description" content="Strategic finance without the full-time hire. Run entirely by Sophie Finke.">
-  <meta property="og:url" content="https://getvantidge.com">
+  <meta property="og:url" content="https://getvantidge.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vantidge">
+  <meta property="og:image" content="https://getvantidge.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vantidge. Strategic finance without the full-time hire.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://getvantidge.com/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23217346'/><text x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'>V</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css">
+  <link rel="stylesheet" href="/xl.css?v=7">
 </head>
 <body>
 <div class="app">
@@ -91,6 +99,7 @@
       <div class="cell" tabindex="0" data-fx="=REFRESH.ALL(sources)">
         <div class="chart rv qc" id="qc">
           <div class="qhead"><b>Queries &amp; Connections</b><button class="btn" id="qRefresh">Refresh All</button></div>
+          <svg class="qflow" id="qflow" viewBox="0 0 460 190" role="img" aria-label="Data flowing from six sources into the model"></svg>
           <ul class="qlist">
             <li data-rows="18,204"><span class="qi">&#9638;</span><span class="qn">Stripe<small>charges, payouts, fees</small></span><span class="qs">Not loaded</span></li>
             <li data-rows="9,871"><span class="qi">&#9638;</span><span class="qn">General ledger<small>QuickBooks or NetSuite</small></span><span class="qs">Not loaded</span></li>
@@ -233,8 +242,8 @@
   </div>
 </div>
 
-<script src="/see-your-company/specs.js"></script>
-<script src="/door.js"></script>
-<script src="/xl.js"></script>
+<script src="/see-your-company/specs.js?v=7"></script>
+<script src="/door.js?v=7"></script>
+<script src="/xl.js?v=7"></script>
 </body>
 </html>
