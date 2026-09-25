@@ -31,7 +31,12 @@
         var id = b64(await crypto.subtle.digest('SHA-256', enc.encode('vantidge:' + norm(company))));
         var entry = (window.SPECS || {})[id];
         if (!entry) {
-          say("I haven't built one for " + company + ' yet.', 'bad');
+          var m = $('msg'); m.className = ''; m.textContent = "I haven't built one for " + company + ' yet. ';
+          var a = document.createElement('a');
+          a.href = 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Build one for ' + company) +
+            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I tried the door and there was nothing behind it. I'd like to see what you'd build for us.\n\nBest,\n");
+          a.textContent = 'Want me to?';
+          m.appendChild(a);
           return;
         }
         var base = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);

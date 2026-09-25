@@ -115,3 +115,42 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 56px 0; }
   figcaption { padding: 0; }
   .pair { grid-template-columns: 1fr; }
 }
+
+/* v5 home */
+.hero2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: start; padding-top: 56px; }
+.hero2 h1 { font-size: clamp(40px, 5.4vw, 66px); line-height: 1.03; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 22px; }
+.hero2 .lede { margin-bottom: 26px; }
+.hero2 .door-box { display: block; margin: 8px 0 0; }
+.hero2 .door-box h2 { font-size: 26px; }
+.small { font-size: 16px; margin: 4px 0 0; }
+
+.log { margin-top: 96px; max-width: 760px; }
+.log h2, .fit h2 { font-size: 30px; line-height: 1.1; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+.log ul { list-style: none; margin-top: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 15px; }
+.log li { display: grid; grid-template-columns: 220px 1fr; gap: 16px; padding: 9px 0; border-bottom: 1px dashed var(--rule); }
+.log li span:first-child { color: var(--text); }
+.log li span:last-child { color: var(--muted); }
+.log li span:last-child::before { content: "\2192  "; }
+
+.tomb { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; max-width: 420px; margin: 88px auto 0; padding: 34px 28px 28px; border: 1px solid var(--text); outline: 1px solid var(--text); outline-offset: 5px; text-decoration: none; color: var(--text); }
+.tomb:hover .tomb-link { text-decoration: underline; }
+.tomb-co { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+.tomb-line { font-size: 16px; font-style: italic; color: var(--muted); }
+.tomb-buyer { margin: 6px 0; }
+.tomb-buyer .bar { display: inline-block; width: 190px; height: 26px; background: var(--text); vertical-align: middle; }
+.tomb-rule { width: 60px; border-top: 1px solid var(--rule); margin: 12px 0 6px; }
+.tomb-note { font-size: 17px; }
+.tomb-link { font-size: 16px; color: var(--muted); margin-top: 6px; }
+
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 96px; }
+.fit h2 { margin-bottom: 14px; }
+.closer { margin-top: 18px; font-size: 24px; font-weight: 600; }
+
+@media (max-width: 800px) {
+  .hero2 { grid-template-columns: 1fr; gap: 32px; padding-top: 24px; }
+  .log { margin-top: 64px; }
+  .log li { grid-template-columns: 1fr; gap: 2px; }
+  .tomb { margin-top: 56px; }
+  .fit { grid-template-columns: 1fr; gap: 28px; margin-top: 64px; }
+  .closer { font-size: 21px; }
+}
