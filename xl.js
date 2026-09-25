@@ -224,3 +224,67 @@
   if (fxEl) setFx(rows[0] ? rows[0].dataset.fx : '', 'A1');
   if (rows[0]) { current = rows[0]; rnFor(rows[0]).classList.add('on'); }
 })();
+
+/* ---------- email dialog: mailto links fail when no mail app is set up ---------- */
+(function () {
+  var dlg;
+  function parse(href) {
+    var q = href.split('?')[1] || '', o = { to: href.slice(7).split('?')[0], su: '', body: '' };
+    q.split('&').forEach(function (kv) { var p = kv.split('='); if (p[0] === 'subject') o.su = decodeURIComponent(p[1] || ''); if (p[0] === 'body') o.body = decodeURIComponent(p[1] || ''); });
+    return o;
+  }
+  function build() {
+    dlg = document.createElement('div');
+    dlg.className = 'mdlg';
+    dlg.innerHTML = '<div class="mbox" role="dialog" aria-modal="true" aria-label="Email Sophie">' +
+      '<div class="mhead"><span>Email Sophie</span><button class="mx" aria-label="Close">&times;</button></div>' +
+      '<div class="mbody"><p class="mto">sophie@getvantidge.com</p><p class="msu"></p>' +
+      '<div class="mbtns"><a class="btn go" data-k="gmail" target="_blank" rel="noopener">Open in Gmail</a>' +
+      '<a class="btn" data-k="outlook" target="_blank" rel="noopener">Open in Outlook</a>' +
+      '<a class="btn" data-k="app">Use my mail app</a>' +
+      '<button class="btn" data-k="copy">Copy address</button></div></div></div>';
+    document.body.appendChild(dlg);
+    dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('mx')) close(); });
+    dlg.querySelector('[data-k=copy]').addEventListener('click', function () {
+      var b = this;
+      (navigator.clipboard ? navigator.clipboard.writeText('sophie@getvantidge.com') : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'sophie@getvantidge.com'; });
+    });
+    dlg.querySelectorAll('a[data-k]').forEach(function (a) { a.addEventListener('click', function () { setTimeout(close, 300); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+  function open(href) {
+    if (!dlg) build();
+    var o = parse(href), e = encodeURIComponent;
+    dlg.querySelector('.msu').textContent = o.su ? 'Subject: ' + o.su : '';
+    dlg.querySelector('[data-k=gmail]').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + e(o.to) + '&su=' + e(o.su) + '&body=' + e(o.body);
+    dlg.querySelector('[data-k=outlook]').href = 'https://outlook.office.com/mail/deeplink/compose?to=' + e(o.to) + '&subject=' + e(o.su) + '&body=' + e(o.body);
+    dlg.querySelector('[data-k=app]').href = href;
+    dlg.querySelector('[data-k=copy]').textContent = 'Copy address';
+    dlg.classList.add('on');
+    dlg.querySelector('[data-k=gmail]').focus();
+  }
+  function close() { if (dlg) dlg.classList.remove('on'); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || a.closest('.mdlg')) return;
+    e.preventDefault(); open(a.href);
+  });
+})();
+
+/* ---------- "See your company": jump to the door and mark it ---------- */
+(function () {
+  function showDoor() {
+    var d = document.getElementById('door'); if (!d) return false;
+    d.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    d.classList.remove('ants'); void d.offsetWidth; d.classList.add('ants');
+    setTimeout(function () { var i = document.getElementById('co'); if (i) i.focus({ preventScroll: true }); }, 450);
+    var ref = document.getElementById('ref'), fx = document.getElementById('fx');
+    if (ref) ref.textContent = 'B1'; if (fx) fx.textContent = '=OPEN(company, password)';
+    return true;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="/#door"], a[href="#door"]');
+    if (a && showDoor()) e.preventDefault();
+  });
+  if (location.hash === '#door') setTimeout(showDoor, 300);
+})();
