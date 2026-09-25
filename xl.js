@@ -285,17 +285,19 @@
 /* ---------- email: pick-your-path composer ---------- */
 (function () {
   var TO = 'sophie@getvantidge.com';
+  var CAL = ''; // booking link, e.g. https://calendly.com/sophie-getvantidge/30min
   var STEPS = [
     { k: 'topic', q: "What's coming up?", opts: [
       ['raise', 'A raise'], ['sale', 'A sale, or a buyer knocking'], ['hire', "We're hiring for finance"],
       ['model', "We don't have a model we trust"], ['data', 'Our data is a mess'], ['dd', 'Diligence, soon'], ['curious', 'Just curious'] ] },
     { k: 'when', q: 'When?', opts: [ ['now', 'This month'], ['qtr', 'This quarter'], ['year', 'This year'], ['someday', 'Someday'] ] },
     { k: 'who', q: 'Who does finance today?', opts: [ ['nobody', 'Nobody, really'], ['me', 'Me, at night'], ['bk', 'A bookkeeper'], ['acct', 'An outside accountant'] ] },
+    { k: 'ask', q: 'What do you want out of this?', opts: [ ['what', "Ask what you'd do for us"], ['call', 'Schedule a call'], ['other', 'Something else'] ] },
     { k: 'you', q: 'Who should I write back to?', input: true }
   ];
   var TXT = {
     topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", data: "Our numbers live in too many systems and nobody trusts which one is right.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
-    when: { now: "It's happening this month.", qtr: 'Probably this quarter.', year: 'Sometime this year.', someday: 'No set timing yet.' },
+    when: { now: 'We want to get going this month.', qtr: 'We want to get going this quarter.', year: 'Sometime this year.', someday: 'No set timing yet.' },
     who: { nobody: 'Right now nobody really owns finance.', me: "Right now I'm doing the finance myself, mostly at night.", bk: "Right now we have a bookkeeper and that's about it.", acct: 'Right now we use an outside accountant.' },
     subj: { raise: 'raise', sale: 'sale', hire: 'strategic finance', model: 'operating model', data: 'data', dd: 'diligence', curious: 'hello' },
     whenS: { now: 'this month', qtr: 'this quarter', year: 'this year', someday: '' }
@@ -313,8 +315,12 @@
     var su = (co ? co + ': ' : '') + TXT.subj[ans.topic] + (TXT.whenS[ans.when] ? ' ' + TXT.whenS[ans.when] : '');
     su = su.charAt(0).toUpperCase() + su.slice(1);
     var intro = nm ? "I'm " + nm + (co ? ' at ' + co : '') + '. ' : (co ? "I'm at " + co + '. ' : '');
-    var body = 'Hi Sophie,\n\n' + intro + TXT.topic[ans.topic] + ' ' + TXT.when[ans.when] + ' ' + TXT.who[ans.who] +
-      '\n\nCould we find 30 minutes to talk?\n\nBest,\n' + (nm || '');
+    var when = ans.topic === 'curious' ? '' : ' ' + TXT.when[ans.when];
+    var close = ans.ask === 'what' ? 'What would you do for ' + (co || 'us') + '?'
+      : ans.ask === 'call' ? 'Could we find 30 minutes to talk?'
+      : ((ans.note || '').trim() || 'Could we find 30 minutes to talk?');
+    var body = 'Hi Sophie,\n\n' + intro + TXT.topic[ans.topic] + when + ' ' + TXT.who[ans.who] +
+      '\n\n' + close + '\n\nBest,\n' + (nm || '');
     return { su: su, body: body };
   }
   function build() {
@@ -336,7 +342,8 @@
       var S = STEPS[st], h = dots() + '<p class="mq">' + S.q + '</p>';
       if (S.input) {
         h += '<div class="mform"><label>Your name<input class="in" id="mName" value="' + esc(ans.name || '') + '"></label>' +
-          '<label>Company<input class="in" id="mCo" value="' + esc(ans.company || '') + '"></label></div>' +
+          '<label>Company<input class="in" id="mCo" value="' + esc(ans.company || '') + '"></label>' +
+          (ans.ask === 'other' ? '<label>What\'s on your mind?<textarea class="in" id="mNote" rows="3">' + esc(ans.note || '') + '</textarea></label>' : '') + '</div>' +
           '<div class="mnav"><button class="btn" data-back>Back</button><button class="btn go" data-next>Write my email</button></div>';
       } else {
         h += '<div class="mopts">' + S.opts.map(function (o) { return '<button class="mopt' + (ans[S.k] === o[0] ? ' on' : '') + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>';
@@ -347,12 +354,15 @@
       var nx = B.querySelector('[data-next]');
       if (nx) {
         var n = B.querySelector('#mName'); setTimeout(function () { n.focus(); }, 30);
-        nx.onclick = function () { ans.name = n.value; ans.company = B.querySelector('#mCo').value; st++; render(); };
+        nx.onclick = function () { ans.name = n.value; ans.company = B.querySelector('#mCo').value; var nt = B.querySelector('#mNote'); if (nt) ans.note = nt.value; st++; render(); };
         B.querySelectorAll('input').forEach(function (i) { i.onkeydown = function (e) { if (e.key === 'Enter') nx.click(); }; });
       }
     } else {
       var m = preset || compose();
-      B.innerHTML = (preset ? '' : dots()) + '<p class="mq">' + (preset ? 'Here it is.' : 'Done. You just have to press send.') + '</p>' +
+      var cal = !preset && ans.ask === 'call' && CAL;
+      var calUrl = cal ? CAL + (CAL.indexOf('?') < 0 ? '?' : '&') + 'name=' + encodeURIComponent(ans.name || '') : '';
+      B.innerHTML = (preset ? '' : dots()) + '<p class="mq">' + (preset ? 'Here it is.' : cal ? 'Pick a time.' : 'Done. You just have to press send.') + '</p>' +
+        (cal ? '<a class="btn go mcal" href="' + calUrl + '" target="_blank" rel="noopener">Open my calendar</a><p class="small muted" style="margin:10px 0 8px">Or send a note first.</p>' : '') +
         '<div class="mmail"><div class="mrow"><span>To</span><b>' + TO + '</b></div>' +
         '<div class="mrow"><span>Subject</span><input id="mSu" value="' + esc(m.su) + '"></div>' +
         '<textarea id="mTx" rows="9">' + esc(m.body) + '</textarea></div>' +

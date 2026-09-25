@@ -269,3 +269,6 @@ p + p { margin-top: 10px; }
 @keyframes pop { 40% { transform: scale(1.08); } }
 .qn small { display: none; }
 @media (prefers-reduced-motion: reduce) { .qfd { display: none; } .qf.run .qfp { animation: none; } }
+
+.mcal { display: block; text-align: center; padding: 10px; font-size: 16px; }
+.mform textarea.in { font: inherit; resize: vertical; }
