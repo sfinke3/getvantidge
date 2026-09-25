@@ -225,49 +225,112 @@
   if (rows[0]) { current = rows[0]; rnFor(rows[0]).classList.add('on'); }
 })();
 
-/* ---------- email dialog: mailto links fail when no mail app is set up ---------- */
+/* ---------- email: pick-your-path composer ---------- */
 (function () {
-  var dlg;
+  var TO = 'sophie@getvantidge.com';
+  var STEPS = [
+    { k: 'topic', q: "What's coming up?", opts: [
+      ['raise', 'A raise'], ['sale', 'A sale, or a buyer knocking'], ['hire', "We're hiring for finance"],
+      ['model', "We don't have a model we trust"], ['dd', 'Diligence, soon'], ['curious', 'Just curious'] ] },
+    { k: 'when', q: 'When?', opts: [ ['now', 'This month'], ['qtr', 'This quarter'], ['year', 'This year'], ['someday', 'Someday'] ] },
+    { k: 'who', q: 'Who does finance today?', opts: [ ['nobody', 'Nobody, really'], ['me', 'Me, at night'], ['bk', 'A bookkeeper'], ['acct', 'An outside accountant'] ] },
+    { k: 'you', q: 'Who should I write back to?', input: true }
+  ];
+  var TXT = {
+    topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
+    when: { now: "It's happening this month.", qtr: 'Probably this quarter.', year: 'Sometime this year.', someday: 'No set timing yet.' },
+    who: { nobody: 'Right now nobody really owns finance.', me: "Right now I'm doing the finance myself, mostly at night.", bk: "Right now we have a bookkeeper and that's about it.", acct: 'Right now we use an outside accountant.' },
+    subj: { raise: 'raise', sale: 'sale', hire: 'strategic finance', model: 'operating model', dd: 'diligence', curious: 'hello' },
+    whenS: { now: 'this month', qtr: 'this quarter', year: 'this year', someday: '' }
+  };
+  var dlg, st, ans, preset;
+  function el(h) { var d = document.createElement('div'); d.innerHTML = h; return d.firstChild; }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function parse(href) {
-    var q = href.split('?')[1] || '', o = { to: href.slice(7).split('?')[0], su: '', body: '' };
+    var q = href.split('?')[1] || '', o = { su: '', body: '' };
     q.split('&').forEach(function (kv) { var p = kv.split('='); if (p[0] === 'subject') o.su = decodeURIComponent(p[1] || ''); if (p[0] === 'body') o.body = decodeURIComponent(p[1] || ''); });
     return o;
   }
+  function compose() {
+    var co = (ans.company || '').trim(), nm = (ans.name || '').trim();
+    var su = (co ? co + ': ' : '') + TXT.subj[ans.topic] + (TXT.whenS[ans.when] ? ' ' + TXT.whenS[ans.when] : '');
+    su = su.charAt(0).toUpperCase() + su.slice(1);
+    var intro = nm ? "I'm " + nm + (co ? ' at ' + co : '') + '. ' : (co ? "I'm at " + co + '. ' : '');
+    var body = 'Hi Sophie,\n\n' + intro + TXT.topic[ans.topic] + ' ' + TXT.when[ans.when] + ' ' + TXT.who[ans.who] +
+      '\n\nCould we find 30 minutes to talk?\n\nBest,\n' + (nm || '');
+    return { su: su, body: body };
+  }
   function build() {
-    dlg = document.createElement('div');
-    dlg.className = 'mdlg';
-    dlg.innerHTML = '<div class="mbox" role="dialog" aria-modal="true" aria-label="Email Sophie">' +
-      '<div class="mhead"><span>Email Sophie</span><button class="mx" aria-label="Close">&times;</button></div>' +
-      '<div class="mbody"><p class="mto">sophie@getvantidge.com</p><p class="msu"></p>' +
-      '<div class="mbtns"><a class="btn go" data-k="gmail" target="_blank" rel="noopener">Open in Gmail</a>' +
-      '<a class="btn" data-k="outlook" target="_blank" rel="noopener">Open in Outlook</a>' +
-      '<a class="btn" data-k="app">Use my mail app</a>' +
-      '<button class="btn" data-k="copy">Copy address</button></div></div></div>';
+    dlg = el('<div class="mdlg"><div class="mbox" role="dialog" aria-modal="true" aria-label="Email Sophie">' +
+      '<div class="mhead"><span id="mTitle">Email Sophie</span><button class="mx" aria-label="Close">&times;</button></div>' +
+      '<div class="mbody" id="mBody"></div></div></div>');
     document.body.appendChild(dlg);
     dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('mx')) close(); });
-    dlg.querySelector('[data-k=copy]').addEventListener('click', function () {
-      var b = this;
-      (navigator.clipboard ? navigator.clipboard.writeText('sophie@getvantidge.com') : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'sophie@getvantidge.com'; });
-    });
-    dlg.querySelectorAll('a[data-k]').forEach(function (a) { a.addEventListener('click', function () { setTimeout(close, 300); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+  function dots() {
+    var h = '<div class="msteps">';
+    for (var i = 0; i <= STEPS.length; i++) h += '<i class="' + (i < st ? 'd' : i === st ? 'c' : '') + '"></i>';
+    return h + '</div>';
+  }
+  function render() {
+    var B = dlg.querySelector('#mBody');
+    if (st < STEPS.length) {
+      var S = STEPS[st], h = dots() + '<p class="mq">' + S.q + '</p>';
+      if (S.input) {
+        h += '<div class="mform"><label>Your name<input class="in" id="mName" value="' + esc(ans.name || '') + '"></label>' +
+          '<label>Company<input class="in" id="mCo" value="' + esc(ans.company || '') + '"></label></div>' +
+          '<div class="mnav"><button class="btn" data-back>Back</button><button class="btn go" data-next>Write my email</button></div>';
+      } else {
+        h += '<div class="mopts">' + S.opts.map(function (o) { return '<button class="mopt' + (ans[S.k] === o[0] ? ' on' : '') + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>';
+        if (st) h += '<div class="mnav"><button class="btn" data-back>Back</button></div>';
+      }
+      B.innerHTML = h;
+      B.querySelectorAll('.mopt').forEach(function (b) { b.onclick = function () { ans[S.k] = b.dataset.v; st++; render(); }; });
+      var nx = B.querySelector('[data-next]');
+      if (nx) {
+        var n = B.querySelector('#mName'); setTimeout(function () { n.focus(); }, 30);
+        nx.onclick = function () { ans.name = n.value; ans.company = B.querySelector('#mCo').value; st++; render(); };
+        B.querySelectorAll('input').forEach(function (i) { i.onkeydown = function (e) { if (e.key === 'Enter') nx.click(); }; });
+      }
+    } else {
+      var m = preset || compose();
+      B.innerHTML = (preset ? '' : dots()) + '<p class="mq">' + (preset ? 'Here it is.' : 'Done. You just have to press send.') + '</p>' +
+        '<div class="mmail"><div class="mrow"><span>To</span><b>' + TO + '</b></div>' +
+        '<div class="mrow"><span>Subject</span><input id="mSu" value="' + esc(m.su) + '"></div>' +
+        '<textarea id="mTx" rows="9">' + esc(m.body) + '</textarea></div>' +
+        '<div class="msend"><a class="btn go" data-k="gmail" target="_blank" rel="noopener">Send with Gmail</a>' +
+        '<a class="btn" data-k="outlook" target="_blank" rel="noopener">Send with Outlook</a>' +
+        '<a class="btn" data-k="app">My mail app</a><button class="btn" data-k="copy">Copy it</button></div>' +
+        (preset ? '' : '<div class="mnav"><button class="btn" data-back>Back</button></div>');
+      var link = function () {
+        var su = B.querySelector('#mSu').value, tx = B.querySelector('#mTx').value, e = encodeURIComponent;
+        B.querySelector('[data-k=gmail]').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + e(TO) + '&su=' + e(su) + '&body=' + e(tx);
+        B.querySelector('[data-k=outlook]').href = 'https://outlook.office.com/mail/deeplink/compose?to=' + e(TO) + '&subject=' + e(su) + '&body=' + e(tx);
+        B.querySelector('[data-k=app]').href = 'mailto:' + TO + '?subject=' + e(su) + '&body=' + e(tx);
+      };
+      link(); B.querySelector('#mSu').oninput = link; B.querySelector('#mTx').oninput = link;
+      B.querySelector('[data-k=copy]').onclick = function () {
+        var b = this, t = 'To: ' + TO + '\nSubject: ' + B.querySelector('#mSu').value + '\n\n' + B.querySelector('#mTx').value;
+        (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'Copy failed'; });
+      };
+      B.querySelectorAll('.msend a').forEach(function (a) { a.addEventListener('click', function () { setTimeout(close, 400); }); });
+    }
+    var bk = B.querySelector('[data-back]'); if (bk) bk.onclick = function () { st--; render(); };
   }
   function open(href) {
     if (!dlg) build();
-    var o = parse(href), e = encodeURIComponent;
-    dlg.querySelector('.msu').textContent = o.su ? 'Subject: ' + o.su : '';
-    dlg.querySelector('[data-k=gmail]').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + e(o.to) + '&su=' + e(o.su) + '&body=' + e(o.body);
-    dlg.querySelector('[data-k=outlook]').href = 'https://outlook.office.com/mail/deeplink/compose?to=' + e(o.to) + '&subject=' + e(o.su) + '&body=' + e(o.body);
-    dlg.querySelector('[data-k=app]').href = href;
-    dlg.querySelector('[data-k=copy]').textContent = 'Copy address';
-    dlg.classList.add('on');
-    dlg.querySelector('[data-k=gmail]').focus();
+    var o = parse(href);
+    preset = o.body ? o : null;
+    ans = {}; st = preset ? STEPS.length : 0;
+    dlg.querySelector('#mTitle').textContent = 'Email Sophie';
+    render(); dlg.classList.add('on');
   }
   function close() { if (dlg) dlg.classList.remove('on'); }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
     if (!a || a.closest('.mdlg')) return;
-    e.preventDefault(); open(a.href);
+    e.preventDefault(); open(a.getAttribute('href'));
   });
 })();
 
