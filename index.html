@@ -8,123 +8,207 @@
   <meta property="og:title" content="Vantidge">
   <meta property="og:description" content="Strategic finance without the full-time hire. Run entirely by Sophie Finke.">
   <meta property="og:url" content="https://getvantidge.com">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85' font-family='Georgia,serif'>V</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23217346'/><text x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'>V</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/xl.css">
 </head>
 <body>
+<div class="app">
 
-<div class="wide">
-  <header>
-    <a class="name" href="/">Vantidge</a>
-    <nav>
-      <a href="/case-study/">Case study</a>
-      <a href="#door">See your company</a>
-    </nav>
-  </header>
-</div>
+  <div class="top">
+    <div class="title"><b>Vantidge.xlsx</b><span class="hide-sm">Run entirely by Sophie Finke</span></div>
+    <div class="fx"><div class="ref" id="ref">A1</div><div class="lbl">fx</div><div class="f" id="fx"></div></div>
+    <div class="colhdr"><div></div><div>A</div><div>B</div></div>
+  </div>
 
-<main>
-  <div class="wide hero2">
-    <div>
-      <h1>Strategic finance without the full&#8209;time&nbsp;hire.</h1>
-      <p class="lede">Your operating model, your data room, and someone to run the deal.</p>
-      <p><a class="btn" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Tell me what's coming up</a></p>
-      <p class="runby">Run entirely by Sophie Finke.</p>
+  <div class="sheet" id="sheet">
+
+    <!-- 1 hero -->
+    <div class="rn">1</div>
+    <div class="row two" data-ref="A1" data-fx="=strategic_finance - full_time_hire">
+      <div class="cell has-note" tabindex="0" data-fx="=strategic_finance - full_time_hire">
+        <h1>Strategic finance without the full&#8209;time&nbsp;hire.</h1>
+        <p class="lede">Your operating model, your data room, and someone to run the deal.</p>
+        <a class="btn go" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Tell me what's coming up</a>
+        <p class="runby">Run entirely by Sophie Finke.</p>
+        <div class="note"><b>Sophie Finke:</b>Blue cells are inputs. Black cells are formulas. Click around.</div>
+      </div>
+      <div class="cell door" id="door" tabindex="0" data-fx="=OPEN(company, password)">
+        <h3>I may have already built yours.</h3>
+        <p class="muted small">Sometimes I build a preview of what I'd do for a company before we've talked, using only public information. If I emailed you a password, open yours here.</p>
+        <form id="f" autocomplete="off" style="margin-top:8px">
+          <div class="field"><label for="co">Company</label><input id="co" name="co" required></div>
+          <div class="field"><label for="pw">Password</label><input id="pw" name="pw" type="password" required></div>
+          <button class="btn" type="submit" id="go">=OPEN()</button>
+          <p id="msg" role="status"></p>
+        </form>
+        <p class="muted small">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
+      </div>
     </div>
 
-    <section class="door-box" id="door">
-      <h2>I may have already built yours.</h2>
-      <p>Sometimes I build a preview of what I'd do for a company before we've talked, using only public information. If I emailed you a password, open yours here.</p>
-      <form class="door" id="f" autocomplete="off">
-        <label for="co">Company</label>
-        <input id="co" name="co" required>
-        <label for="pw">Password</label>
-        <input id="pw" name="pw" type="password" required>
-        <button type="submit" id="go">Open</button>
-        <p id="msg" role="status"></p>
-      </form>
-      <p class="muted small">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
-    </section>
-  </div>
+    <!-- 2 bar -->
+    <div class="rn">2</div>
+    <div class="row bar" data-ref="A2" data-fx="=&quot;The model now. The diligence and the deal when you need them.&quot;">The model now. The diligence and the deal when you need them.</div>
 
-  <div class="wide rows">
-    <h2 class="rows-head">The model now. The diligence and the deal when you need them.</h2>
-    <section class="row">
-      <div class="row-text">
-        <h2>The model</h2>
+    <!-- 3 model -->
+    <div class="rn">3</div>
+    <div class="row two" data-ref="A3" data-fx="=FORECAST(drivers, tie_out = TRUE)">
+      <div class="cell" tabindex="0" data-fx="=FORECAST(drivers, tie_out = TRUE)">
+        <h3>The model</h3>
         <p>Built up from what drives your business and tied to the books. The deck and the board pack come out of it and never disagree with it.</p>
-        <p>Plus a dashboard version for the people who won't open Excel.</p>
+        <p>Plus a dashboard for the people who won't open Excel.</p>
+        <p class="muted small" style="margin-top:14px">Try the scenarios on the chart. Every lever moves the whole plan.</p>
       </div>
-      <img src="/case-study/img/opmodel-capacity.jpg" alt="Redacted forecast model" loading="lazy">
-    </section>
-
-    <section class="row">
-      <div class="row-text">
-        <h2>The diligence</h2>
-        <p>I lead it. I run the data room and the request list and take the calls with the other side's consultants. Every answer has an owner and a file behind it.</p>
-        <p>Your team keeps running the company while it happens.</p>
+      <div class="cell" tabindex="0" data-fx="=CHART(cash_balance, scenario)">
+        <div class="chart rv" id="cashChart">
+          <div class="ct">Sample Co. cash balance</div>
+          <div class="cs">Illustrative company, $mm</div>
+          <svg viewBox="0 0 520 230" id="cashSvg" role="img" aria-label="Cash balance chart"></svg>
+          <div class="slicer" id="scen">
+            <button class="on" data-s="base">Base</button>
+            <button data-s="hire">Hire 2 AEs in month 3</button>
+            <button data-s="raise">Raise $6mm in month 10</button>
+          </div>
+          <div class="readout">
+            <span>Runway</span><span class="v" id="runway">&nbsp;</span>
+            <span>Cash out</span><span class="v" id="cashout">&nbsp;</span>
+          </div>
+        </div>
       </div>
-      <img src="/case-study/img/tracker-requests.jpg" alt="Redacted diligence request tracker" loading="lazy">
-    </section>
+    </div>
 
-    <section class="row">
-      <div class="row-text">
-        <h2>The raise or the sale</h2>
+    <!-- 4 diligence -->
+    <div class="rn">4</div>
+    <div class="row two" data-ref="A4" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
+      <div class="cell" tabindex="0" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
+        <h3>The diligence</h3>
+        <p>I lead it. I run the data room and the request list and take the calls with the other side's consultants.</p>
+        <p>Every answer has an owner and a file behind it.</p>
+      </div>
+      <div class="cell" tabindex="0" data-fx="=TRACKER(request_list)">
+        <div class="chart rv" id="trk">
+          <table class="trk">
+            <thead><tr><th>#</th><th>Request</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>1.01</td><td>Monthly P&amp;L, trailing 36 months</td><td><span class="pill">Open</span></td></tr>
+              <tr><td>1.04</td><td>Revenue by customer, tied to the ledger</td><td><span class="pill">Open</span></td></tr>
+              <tr><td>2.12</td><td>Cap table and option ledger</td><td><span class="pill">Open</span></td></tr>
+              <tr><td>3.07</td><td>Top 20 customer contracts</td><td><span class="pill">Open</span></td></tr>
+              <tr><td>4.02</td><td>Headcount by function and start date</td><td><span class="pill">Open</span></td></tr>
+              <tr><td>6.15</td><td>Sales tax exposure by state</td><td><span class="pill">Open</span></td></tr>
+            </tbody>
+          </table>
+          <div class="prog"><i id="progBar"></i></div>
+          <div class="readout" style="margin-top:4px">
+            <span>Answered, Playground sale</span><span class="v"><span id="ansN">0</span> / 439</span>
+          </div>
+          <div class="cs" style="text-align:left;margin-top:4px">Typical requests shown. The count is real.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 raise -->
+    <div class="rn">5</div>
+    <div class="row two" data-ref="A5" data-fx="=raise / (pre_money + raise)">
+      <div class="cell" tabindex="0" data-fx="=raise / (pre_money + raise)">
+        <h3>The raise or the sale</h3>
         <p>The round sized off the cash plan, and what the terms actually do to the founders.</p>
         <p>If you don't have a banker, I'll run the process, down to comments on the merger agreement.</p>
+        <p class="muted small" style="margin-top:14px">Change the blue cells.</p>
       </div>
-      <img src="/case-study/img/tracker-merger.jpg" alt="Redacted merger agreement review" loading="lazy">
-    </section>
-  </div>
+      <div class="cell" tabindex="0" data-fx="=founders * (1 - new_investor - pool_top_up)">
+        <div class="chart rv">
+          <div class="ct">What a round does to the founders</div>
+          <div class="cs">Illustrative. Blue cells are inputs.</div>
+          <div class="calc" style="margin-top:8px">
+            <label for="iRaise">Raise ($mm)</label><input class="in" id="iRaise" value="3.0" inputmode="decimal">
+            <label for="iPre">Pre-money ($mm)</label><input class="in" id="iPre" value="12.0" inputmode="decimal">
+            <label for="iPool">Pool top-up (%)</label><input class="in" id="iPool" value="8" inputmode="decimal">
+            <label for="iFound">Founders today (%)</label><input class="in" id="iFound" value="70" inputmode="decimal">
+            <span>Post-money</span><span class="out" id="oPost"></span>
+            <span>New investor</span><span class="out" id="oNew"></span>
+            <span>Founders after</span><span class="out" id="oFound"></span>
+          </div>
+          <div class="small muted" style="margin-top:10px">Before</div>
+          <div class="stack" id="stBefore"><span style="background:var(--s1)"></span><span style="background:var(--s3)"></span></div>
+          <div class="small muted">After</div>
+          <div class="stack" id="stAfter"><span style="background:var(--s1)"></span><span style="background:var(--s3)"></span><span style="background:var(--s4)"></span><span style="background:var(--s2)"></span></div>
+          <div class="legend"><span><i style="background:var(--s1)"></i>Founders</span><span><i style="background:var(--s3)"></i>Everyone else</span><span><i style="background:var(--s4)"></i>Pool top-up</span><span><i style="background:var(--s2)"></i>New investor</span></div>
+        </div>
+      </div>
+    </div>
 
-  <div class="wide">
-    <a class="tomb" href="/case-study/">
-      <span class="tomb-co">Playground</span>
-      <span class="tomb-line">has been acquired by</span>
-      <span class="tomb-buyer">Procare Solutions</span>
-      <span class="tomb-line">a Roper Technologies company</span>
-      <span class="tomb-rule"></span>
-      <span class="tomb-note">No banker. I led diligence.</span>
-      <span class="tomb-link">Read the case study &rarr;</span>
-    </a>
-  </div>
+    <!-- 6 bar -->
+    <div class="rn">6</div>
+    <div class="row bar" data-ref="A6" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">Track record</div>
 
-  <div class="wide">
-    <section class="fit">
-      <div>
-        <h2>This is for you if</h2>
-        <ul class="plain">
-          <li>You're hiring for strategic finance, or know you should be.</li>
-          <li>You don't have an operating model, or you have one nobody trusts.</li>
-          <li>A raise or a sale is on the horizon, even a distant one.</li>
+    <!-- 7 track record -->
+    <div class="rn">7</div>
+    <div class="row two" data-ref="A7" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
+      <div class="cell" tabindex="0" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
+        <h3>Playground</h3>
+        <p>Acquired by Procare Solutions, a Roper Technologies company, in September 2026. We didn't hire a banker. I led diligence against a buyer with three consulting firms.</p>
+        <p style="margin-top:14px"><a class="btn" href="/case-study/">Open the case study</a></p>
+      </div>
+      <div class="cell" tabindex="0" data-fx="=SUM(B7:B9)">
+        <div class="nums" id="nums">
+          <span>Requests answered</span><span class="v" data-n="439"><i class="db"></i><span>0</span></span>
+          <span>Files handed over</span><span class="v" data-n="714"><i class="db"></i><span>0</span></span>
+          <span>Diligence calls</span><span class="v" data-n="27"><i class="db"></i><span>0</span></span>
+          <span>Bankers</span><span class="v has-note" tabindex="0"><span>&ndash;</span><div class="note"><b>Sophie Finke:</b>Not a blank cell. Zero bankers.</div></span>
+        </div>
+        <p class="muted small" style="margin-top:10px">Drag across the numbers, or click them, and check the status bar.</p>
+      </div>
+    </div>
+
+    <!-- 8 bar -->
+    <div class="rn">8</div>
+    <div class="row bar" data-ref="A8" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">Check</div>
+
+    <!-- 9 check -->
+    <div class="rn">9</div>
+    <div class="row two" data-ref="A9" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+      <div class="cell" tabindex="0" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+        <h3>This is for you if</h3>
+        <ul class="chk" id="chk">
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You're hiring for strategic finance, or know you should be.</span></li>
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You don't have an operating model, or you have one nobody trusts.</span></li>
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>A raise or a sale is on the horizon, even a distant one.</span></li>
+        </ul>
+        <div class="fit" id="fit">=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), "")</div>
+      </div>
+      <div class="cell" tabindex="0" data-fx="=NOT(fit)">
+        <h3 class="muted">It's not for you if</h3>
+        <ul class="chk not">
+          <li><span class="box" style="border-color:#bbb"></span><span>You already have a CFO who builds models.</span></li>
+          <li><span class="box" style="border-color:#bbb"></span><span>You need bookkeeping.</span></li>
         </ul>
       </div>
-      <div>
-        <h2>It's not for you if</h2>
-        <ul class="plain">
-          <li>You already have a CFO who builds models.</li>
-          <li>You need bookkeeping. Go to Pilot, they're good.</li>
-        </ul>
+    </div>
+
+    <!-- 10 about -->
+    <div class="rn">10</div>
+    <div class="row" data-ref="A10" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
+      <div class="cell" tabindex="0" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
+        <p>I'm Sophie. Three years on RBC's index trading desk, then Wharton, then Playground. I build software too. That's how a deal tracker ends up with a gossip column.</p>
+        <p style="margin-top:12px"><b>Who's leading your diligence?</b> If the answer is nobody, <a href="mailto:sophie@getvantidge.com">email me</a>.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="rn">11</div><div class="row" style="min-height:44px"></div>
+    <div class="rn">12</div><div class="row" style="min-height:44px"></div>
   </div>
 
-  <div class="wide">
-    <section class="bio">
-      <p>I'm Sophie. Three years on RBC's index trading desk, then Wharton, then Playground. I build software too. That's how a deal tracker ends up with a gossip column.</p>
-      <p class="closer">Who's leading your diligence? If the answer is nobody, <a href="mailto:sophie@getvantidge.com">email me</a>.</p>
-    </section>
+  <div class="bottom">
+    <div class="tabs"><a class="on" href="/">Home</a><a href="/case-study/">Case study</a><a href="/#door">See your company</a><a href="mailto:sophie@getvantidge.com">Email</a></div>
+    <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><span>100%</span></span></div>
   </div>
-</main>
-
-<div class="wide">
-  <footer>Vantidge is run entirely by Sophie Finke &middot; New York &middot; <a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a></footer>
 </div>
 
 <script src="/see-your-company/specs.js"></script>
 <script src="/door.js"></script>
+<script src="/xl.js"></script>
 </body>
 </html>
