@@ -30,7 +30,7 @@
     <div class="row two" data-ref="A1" data-fx="=strategic_finance - full_time_hire">
       <div class="cell has-note" tabindex="0" data-fx="=strategic_finance - full_time_hire">
         <h1>Strategic finance without the full&#8209;time&nbsp;hire.</h1>
-        <p class="lede">I build your operating model. When a raise or a sale comes, I run the diligence work behind it.</p>
+        <p class="lede">I connect your data and build your operating model. When a raise or a sale comes, I run the diligence work behind it.</p>
         <a class="btn go" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Tell me what's coming up</a>
         <p class="runby">Run entirely by Sophie Finke.</p>
         <div class="note"><b>Sophie Finke:</b>Blue cells are inputs. Black cells are formulas. Click around.</div>
@@ -79,9 +79,35 @@
       </div>
     </div>
 
-    <!-- 4 diligence -->
+    <!-- 4 data -->
     <div class="rn">4</div>
-    <div class="row two" data-ref="A4" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
+    <div class="row two" data-ref="A4" data-fx="=REFRESH.ALL(sources)">
+      <div class="cell" tabindex="0" data-fx="=REFRESH.ALL(sources)">
+        <h3>The data</h3>
+        <p>Most arguments about the numbers are really about which system is right. I connect the systems your numbers live in and pull them into one place every night.</p>
+        <p>Then I map which system is the source of truth for each number, and the model reads from there. Nobody types numbers in by hand.</p>
+        <p>On the trading desk I automated processes in Python and kdb+/q and built real-time monitoring tools. Same job, different data.</p>
+      </div>
+      <div class="cell" tabindex="0" data-fx="=REFRESH.ALL(sources)">
+        <div class="chart rv qc" id="qc">
+          <div class="qhead"><b>Queries &amp; Connections</b><button class="btn" id="qRefresh">Refresh All</button></div>
+          <ul class="qlist">
+            <li data-rows="18,204"><span class="qi">&#9638;</span><span class="qn">Stripe<small>charges, payouts, fees</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="9,871"><span class="qi">&#9638;</span><span class="qn">General ledger<small>QuickBooks or NetSuite</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="3,412"><span class="qi">&#9638;</span><span class="qn">CRM<small>Salesforce or HubSpot</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="6,530"><span class="qi">&#9638;</span><span class="qn">Bank and cards<small>every account</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="1,188"><span class="qi">&#9638;</span><span class="qn">Payroll<small>headcount and cost</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="52,960"><span class="qi">&#9638;</span><span class="qn">Warehouse<small>Snowflake or your product DB</small></span><span class="qs">Not loaded</span></li>
+          </ul>
+          <div class="qtie" id="qtie"><span>Tie-outs</span><b id="qtieV">&nbsp;</b></div>
+          <div class="cs" style="text-align:left;margin-top:6px">Sample refresh. Your systems will differ.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 diligence -->
+    <div class="rn">5</div>
+    <div class="row two" data-ref="A5" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
       <div class="cell" tabindex="0" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
         <h3>The diligence</h3>
         <p>When the request list shows up, I run the war room. I set up the data room and track every request. Then I work with your team until each answer is written and posted.</p>
@@ -110,8 +136,8 @@
     </div>
 
     <!-- 5 raise -->
-    <div class="rn">5</div>
-    <div class="row two" data-ref="A5" data-fx="=raise / (pre_money + raise)">
+    <div class="rn">6</div>
+    <div class="row two" data-ref="A6" data-fx="=raise / (pre_money + raise)">
       <div class="cell" tabindex="0" data-fx="=raise / (pre_money + raise)">
         <h3>Before a raise</h3>
         <p>I size the round off the cash plan and show what the terms do to the founders' ownership.</p>
@@ -141,18 +167,18 @@
     </div>
 
     <!-- 6 bar -->
-    <div class="rn">6</div>
-    <div class="row bar" data-ref="A6" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">Track record</div>
+    <div class="rn">7</div>
+    <div class="row bar" data-ref="A7" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">Track record</div>
 
     <!-- 7 track record -->
-    <div class="rn">7</div>
-    <div class="row two" data-ref="A7" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
+    <div class="rn">8</div>
+    <div class="row two" data-ref="A8" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
       <div class="cell" tabindex="0" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
         <h3>Playground</h3>
         <p>Acquired by Procare Solutions, a Roper Technologies company, in September 2026. There was no banker and no finance team. I built the model and ran the diligence war room with the three founders.</p>
         <p style="margin-top:14px"><a class="btn" href="/case-study/">Open the case study</a></p>
       </div>
-      <div class="cell" tabindex="0" data-fx="=SUM(B7:B9)">
+      <div class="cell" tabindex="0" data-fx="=SUM(B8:B10)">
         <div class="nums" id="nums">
           <span>Requests answered</span><span class="v" data-n="439"><i class="db"></i><span>0</span></span>
           <span>Files handed over</span><span class="v" data-n="714"><i class="db"></i><span>0</span></span>
@@ -164,20 +190,20 @@
     </div>
 
     <!-- 8 bar -->
-    <div class="rn">8</div>
-    <div class="row bar" data-ref="A8" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">Check</div>
+    <div class="rn">9</div>
+    <div class="row bar" data-ref="A9" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">Check</div>
 
     <!-- 9 check -->
-    <div class="rn">9</div>
-    <div class="row two" data-ref="A9" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
-      <div class="cell" tabindex="0" data-fx="=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+    <div class="rn">10</div>
+    <div class="row two" data-ref="A10" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+      <div class="cell" tabindex="0" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
         <h3>This is for you if</h3>
         <ul class="chk" id="chk">
           <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You're hiring for strategic finance, or know you should be.</span></li>
           <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You don't have an operating model, or you have one nobody trusts.</span></li>
           <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>A raise or a sale is on the horizon, even a distant one.</span></li>
         </ul>
-        <div class="fit" id="fit">=IF(COUNTIF(B9:B11, TRUE) &gt; 0, EMAIL(), "")</div>
+        <div class="fit" id="fit">=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), "")</div>
       </div>
       <div class="cell" tabindex="0" data-fx="=NOT(fit)">
         <h3 class="muted">It's not for you if</h3>
@@ -189,16 +215,16 @@
     </div>
 
     <!-- 10 about -->
-    <div class="rn">10</div>
-    <div class="row" data-ref="A10" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
+    <div class="rn">11</div>
+    <div class="row" data-ref="A11" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
       <div class="cell" tabindex="0" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
         <p>I'm Sophie. Three years on RBC's index trading desk, then Wharton, then Playground. I build software too. That's how a deal tracker ends up with a gossip column.</p>
         <p style="margin-top:12px"><b>Who does finance today?</b> If the answer is nobody, <a href="mailto:sophie@getvantidge.com">email me</a>.</p>
       </div>
     </div>
 
-    <div class="rn">11</div><div class="row" style="min-height:44px"></div>
     <div class="rn">12</div><div class="row" style="min-height:44px"></div>
+    <div class="rn">13</div><div class="row" style="min-height:44px"></div>
   </div>
 
   <div class="bottom">

@@ -168,7 +168,7 @@
     a[0].style.width = F * keep * 100 + '%'; a[1].style.width = (1 - F) * keep * 100 + '%';
     a[2].style.width = pool * 100 + '%'; a[3].style.width = n * 100 + '%';
   }
-  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B5'); }); });
+  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B6'); }); });
   onShow($('#stAfter') && $('#stAfter').closest('.chart'), recalc);
 
   /* ---------- track record: count up, data bars, pick to sum ---------- */
@@ -185,7 +185,7 @@
     if (!p.length) { aggEl.textContent = ''; return; }
     var s = p.reduce(function (a, b) { return a + b; }, 0);
     aggEl.textContent = 'Average: ' + fmt(s / p.length) + '   Count: ' + p.length + '   Sum: ' + fmt(s);
-    setFx('=SUM(' + p.join(', ') + ')', 'B7');
+    setFx('=SUM(' + p.join(', ') + ')', 'B8');
     clicked = Date.now();
   }
   vals.forEach(function (v) {
@@ -208,12 +208,37 @@
         fit.innerHTML = 'TRUE (' + n + ' of 3). <a href="mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Checked ' + n + ' of 3') + '">=EMAIL(&quot;Sophie&quot;)</a>';
       } else {
         fit.className = 'fit';
-        fit.textContent = '=IF(COUNTIF(B9:B11, TRUE) > 0, EMAIL(), "")';
+        fit.textContent = '=IF(COUNTIF(B10:B12, TRUE) > 0, EMAIL(), "")';
       }
-      setFx('=COUNTIF(B9:B11, TRUE)  →  ' + n, 'A9');
+      setFx('=COUNTIF(B10:B12, TRUE)  →  ' + n, 'A10');
       clicked = Date.now();
     });
   });
+
+  /* ---------- queries & connections ---------- */
+  var qBtn = $('#qRefresh'), qRan = false;
+  function refreshAll() {
+    var items = $$('#qc .qlist li'), tie = $('#qtieV');
+    if (!items.length) return;
+    qBtn.disabled = true; tie.textContent = 'Waiting'; tie.className = '';
+    status('Refreshing ' + items.length + ' connections...');
+    items.forEach(function (li) { li.className = ''; li.querySelector('.qs').textContent = 'Queued'; });
+    items.forEach(function (li, i) {
+      var d = still ? 0 : 250 + i * 420;
+      setTimeout(function () { li.className = 'run'; li.querySelector('.qs').textContent = 'Refreshing'; }, d);
+      setTimeout(function () {
+        li.className = 'ok'; li.querySelector('.qs').textContent = li.dataset.rows + ' rows';
+        if (i === items.length - 1) {
+          tie.textContent = '14 of 14 at zero'; tie.className = 'good'; qBtn.disabled = false;
+          status('Ready'); setFx('=REFRESH.ALL(sources)  →  14 tie-outs at zero', 'B4'); clicked = Date.now();
+        }
+      }, d + (still ? 0 : 650));
+    });
+  }
+  if (qBtn) {
+    qBtn.addEventListener('click', function (e) { e.stopPropagation(); refreshAll(); });
+    onShow($('#qc'), function () { if (!qRan) { qRan = true; setTimeout(refreshAll, 400); } });
+  }
 
   /* ---------- small things ---------- */
   document.addEventListener('keydown', function (e) {
@@ -231,16 +256,16 @@
   var STEPS = [
     { k: 'topic', q: "What's coming up?", opts: [
       ['raise', 'A raise'], ['sale', 'A sale, or a buyer knocking'], ['hire', "We're hiring for finance"],
-      ['model', "We don't have a model we trust"], ['dd', 'Diligence, soon'], ['curious', 'Just curious'] ] },
+      ['model', "We don't have a model we trust"], ['data', 'Our data is a mess'], ['dd', 'Diligence, soon'], ['curious', 'Just curious'] ] },
     { k: 'when', q: 'When?', opts: [ ['now', 'This month'], ['qtr', 'This quarter'], ['year', 'This year'], ['someday', 'Someday'] ] },
     { k: 'who', q: 'Who does finance today?', opts: [ ['nobody', 'Nobody, really'], ['me', 'Me, at night'], ['bk', 'A bookkeeper'], ['acct', 'An outside accountant'] ] },
     { k: 'you', q: 'Who should I write back to?', input: true }
   ];
   var TXT = {
-    topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
+    topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", data: "Our numbers live in too many systems and nobody trusts which one is right.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
     when: { now: "It's happening this month.", qtr: 'Probably this quarter.', year: 'Sometime this year.', someday: 'No set timing yet.' },
     who: { nobody: 'Right now nobody really owns finance.', me: "Right now I'm doing the finance myself, mostly at night.", bk: "Right now we have a bookkeeper and that's about it.", acct: 'Right now we use an outside accountant.' },
-    subj: { raise: 'raise', sale: 'sale', hire: 'strategic finance', model: 'operating model', dd: 'diligence', curious: 'hello' },
+    subj: { raise: 'raise', sale: 'sale', hire: 'strategic finance', model: 'operating model', data: 'data', dd: 'diligence', curious: 'hello' },
     whenS: { now: 'this month', qtr: 'this quarter', year: 'this year', someday: '' }
   };
   var dlg, st, ans, preset;
