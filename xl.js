@@ -285,7 +285,7 @@
 /* ---------- email: pick-your-path composer ---------- */
 (function () {
   var TO = 'sophie@getvantidge.com';
-  var CAL = ''; // booking link, e.g. https://calendly.com/sophie-getvantidge/30min
+  var CAL = 'https://calendly.com/sophie-getvantidge/30min';
   var STEPS = [
     { k: 'topic', q: "What's coming up?", opts: [
       ['raise', 'A raise'], ['sale', 'A sale, or a buyer knocking'], ['hire', "We're hiring for finance"],
