@@ -298,3 +298,4 @@ p + p { margin-top: 10px; }
 .sec li { margin-bottom: 4px; }
 .sec p { max-width: 780px; }
 @media (max-width: 800px) { .steps td:first-child { white-space: normal; width: 34%; } .tnav { gap: 10px; } }
+.qmore { font-size: 13px; color: var(--muted); padding: 7px 4px 2px; }

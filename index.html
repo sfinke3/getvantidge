@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css?v=11">
+  <link rel="stylesheet" href="/xl.css?v=12">
 </head>
 <body>
 <div class="app">
@@ -35,11 +35,12 @@
 
     <div class="rn">1</div>
     <div class="row" data-ref="A1" data-fx="=strategic_finance - full_time_hire">
-      <div class="cell hero" tabindex="0" data-fx="=strategic_finance - full_time_hire">
+      <div class="cell hero has-note" tabindex="0" data-fx="=strategic_finance - full_time_hire">
         <h1>Strategic finance without the full&#8209;time&nbsp;hire.</h1>
         <p class="lede">Vantidge connects the systems your numbers live in, builds your operating model on your real books, and gives your team a console to run the company from. When a raise or a sale comes, we run the diligence behind it.</p>
         <p class="ctas"><a class="btn go" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="btn" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Email us</a></p>
         <p class="runby">Already a client? <a href="https://app.getvantidge.com">Sign in</a>.</p>
+        <div class="note"><b>Sophie Finke:</b>Blue cells are inputs. Black cells are formulas. Click around.</div>
       </div>
     </div>
 
@@ -92,6 +93,7 @@
             <li data-rows="3,412"><span class="qi">&#9638;</span><span class="qn">HubSpot<small>deals and pipeline</small></span><span class="qs">Not loaded</span></li>
             <li data-rows="52,960"><span class="qi">&#9638;</span><span class="qn">ClickHouse<small>product usage</small></span><span class="qs">Not loaded</span></li>
           </ul>
+          <div class="qmore">&hellip;and more. Salesforce, NetSuite, payroll, your warehouse: if it has an API, we can connect it.</div>
           <div class="qtie" id="qtie"><span>Tie-outs</span><b id="qtieV">&nbsp;</b></div>
           <div class="cs" style="text-align:left;margin-top:6px">Sample refresh. Your systems will differ.</div>
         </div>
@@ -215,29 +217,31 @@
           <span>Requests answered</span><span class="v" data-n="439"><i class="db"></i><span>0</span></span>
           <span>Files handed over</span><span class="v" data-n="714"><i class="db"></i><span>0</span></span>
           <span>Diligence calls</span><span class="v" data-n="27"><i class="db"></i><span>0</span></span>
-          <span>Bankers</span><span class="v"><span>0</span></span>
+          <span>Bankers</span><span class="v has-note" tabindex="0"><span>&ndash;</span><div class="note"><b>Sophie Finke:</b>Not a blank cell. Zero bankers.</div></span>
         </div>
+        <p class="muted small" style="margin-top:10px">Drag across the numbers, or click them, and check the status bar.</p>
       </div>
     </div>
 
     <div class="rn">12</div>
-    <div class="row bar" data-ref="A12" data-fx="=FIT(company)">Who this is for</div>
+    <div class="row bar" data-ref="A12" data-fx="=IF(COUNTIF(B13:B15, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">Who this is for</div>
 
     <div class="rn">13</div>
-    <div class="row two" data-ref="A13" data-fx="=FIT(company)">
-      <div class="cell" tabindex="0" data-fx="=FIT(company)">
-        <h3>A good fit</h3>
-        <ul class="off">
-          <li>You're hiring for strategic finance, or know you should be.</li>
-          <li>You don't have an operating model, or you have one nobody trusts.</li>
-          <li>A raise or a sale is on the horizon, even a distant one.</li>
+    <div class="row two" data-ref="A13" data-fx="=IF(COUNTIF(B13:B15, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+      <div class="cell" tabindex="0" data-fx="=IF(COUNTIF(B13:B15, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
+        <h3>This is for you if</h3>
+        <ul class="chk" id="chk">
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You're hiring for strategic finance, or know you should be.</span></li>
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You don't have an operating model, or you have one nobody trusts.</span></li>
+          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>A raise or a sale is on the horizon, even a distant one.</span></li>
         </ul>
+        <div class="fit" id="fit">=IF(COUNTIF(B13:B15, TRUE) &gt; 0, EMAIL(), "")</div>
       </div>
-      <div class="cell" tabindex="0" data-fx="=NOT(FIT(company))">
-        <h3 class="muted">Not a fit</h3>
-        <ul class="off not">
-          <li>You already have a CFO who builds models.</li>
-          <li>You need bookkeeping.</li>
+      <div class="cell" tabindex="0" data-fx="=NOT(fit)">
+        <h3 class="muted">It's not for you if</h3>
+        <ul class="chk not">
+          <li><span class="box" style="border-color:#bbb"></span><span>You already have a CFO who builds models.</span></li>
+          <li><span class="box" style="border-color:#bbb"></span><span>You need bookkeeping.</span></li>
         </ul>
       </div>
     </div>
@@ -261,7 +265,7 @@
         <form id="f" autocomplete="off">
           <div class="field"><label for="co">Company</label><input id="co" name="co" required></div>
           <div class="field"><label for="pw">Password</label><input id="pw" name="pw" type="password" required></div>
-          <button class="btn" type="submit" id="go">Open</button>
+          <button class="btn" type="submit" id="go">=OPEN()</button>
           <p id="msg" role="status"></p>
         </form>
         <p class="muted small">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email us</a>.</p>
@@ -277,8 +281,8 @@
   </div>
 </div>
 
-<script src="/see-your-company/specs.js?v=11"></script>
-<script src="/door.js?v=11"></script>
-<script src="/xl.js?v=11"></script>
+<script src="/see-your-company/specs.js?v=12"></script>
+<script src="/door.js?v=12"></script>
+<script src="/xl.js?v=12"></script>
 </body>
 </html>

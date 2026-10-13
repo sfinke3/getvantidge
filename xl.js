@@ -196,6 +196,26 @@
   });
   document.addEventListener('mouseup', function () { dragging = false; });
 
+  /* ---------- fit check ---------- */
+  var boxes = $$('#chk .box'), fit = $('#fit');
+  boxes.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on'));
+      var n = boxes.filter(function (x) { return x.classList.contains('on'); }).length;
+      calc();
+      if (n) {
+        fit.className = 'fit yes';
+        fit.innerHTML = 'TRUE (' + n + ' of 3). <a href="mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Checked ' + n + ' of 3') + '">=EMAIL(&quot;Sophie&quot;)</a>';
+      } else {
+        fit.className = 'fit';
+        fit.textContent = '=IF(COUNTIF(B13:B15, TRUE) > 0, EMAIL(), "")';
+      }
+      setFx('=COUNTIF(B13:B15, TRUE)  →  ' + n, 'A13');
+      clicked = Date.now();
+    });
+  });
+
   /* ---------- queries & connections ---------- */
   var qBtn = $('#qRefresh'), qRan = false;
   var flow = $('#qflow'), NS = 'http://www.w3.org/2000/svg';
@@ -253,6 +273,11 @@
   }
 
   /* ---------- small things ---------- */
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault(); status('Saved. There was nothing to save, it\'s a website.', 3500);
+    }
+  });
   if (fxEl) setFx(rows[0] ? rows[0].dataset.fx : '', 'A1');
   if (rows[0]) { current = rows[0]; rnFor(rows[0]).classList.add('on'); }
 })();

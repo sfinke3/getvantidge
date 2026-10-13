@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css?v=11">
+  <link rel="stylesheet" href="/xl.css?v=12">
 </head>
 <body>
 <div class="app">
@@ -43,7 +43,6 @@
     <div class="row bar" data-ref="A2" data-fx="=TRACKER(requests, owner, status)">The deal tracker</div>
     <div class="rn">3</div>
     <div class="row" data-ref="A3" data-fx="=TRACKER(requests, owner, status)"><div class="cell cs" tabindex="0" data-fx="=TRACKER(requests, owner, status)"><p>The buyer sent over 400 requests in a spreadsheet and stood up the VDR. Sophie built an app to track them internally. Each request had an owner, a status, and a due date, and the app synced with the data room every night.</p>
-    <p>Every night at 9pm the tracker emailed the deal team the day's progress and everything overdue.</p>
     <p>She also connected Claude to the tracker. It could read a request, draft an answer, and attach a file. She checked every draft before anything was posted.</p>
     <figure>
       <img src="/case-study/img/tracker-dashboard.jpg" alt="Dashboard on the day we closed." loading="lazy">
@@ -60,9 +59,18 @@
       <div><img src="/case-study/img/tracker-shortanswers.jpg" alt="Consultants' questions. Answers are blurred." loading="lazy"><figcaption>Consultants' questions. Answers are blurred.</figcaption></div>
     </div></figure></div></div>
     <div class="rn">4</div>
-    <div class="row bar" data-ref="A4" data-fx="=runway(cash, burn)">Burn and runway</div>
+    <div class="row bar" data-ref="A4" data-fx="=SEND(pooh_report, &quot;9:00 PM&quot;)">The Pooh Report</div>
     <div class="rn">5</div>
-    <div class="row" data-ref="A5" data-fx="=runway(cash, burn)"><div class="cell cs" tabindex="0" data-fx="=runway(cash, burn)"><p>Alongside the deal, the founders asked a simple question. If this doesn't go through, how long is our runway and what should we cut?</p>
+    <div class="row" data-ref="A5" data-fx="=SEND(pooh_report, &quot;9:00 PM&quot;)"><div class="cell cs" tabindex="0" data-fx="=SEND(pooh_report, &quot;9:00 PM&quot;)"><p>Sophie sent the deal team an email every night at 9pm. It had the day's progress, what was overdue, and a leaderboard. Claude wrote a short &ldquo;gossip column&rdquo; from what changed in the tracker that day.</p>
+    <p>Each day gave us a &ldquo;happiness meter&rdquo; from the perspective of the buyer's diligence lead (an estimate). It went down when items were overdue or reopened. Sophie changed his LinkedIn picture to have twelve different facial expressions based on the ranking. Don't worry, we sent it to him after the deal, and he loved it.</p>
+    <figure><div class="pair">
+      <div><img src="/case-study/img/report-t12.jpg" alt="Twelve days before signing." loading="lazy"><figcaption>Twelve days before signing.</figcaption></div>
+      <div><img src="/case-study/img/report-finale-reel.jpg" alt="The last one, sent the night we closed." loading="lazy"><figcaption>The last one, sent the night we closed.</figcaption></div>
+    </div></figure></div></div>
+    <div class="rn">6</div>
+    <div class="row bar" data-ref="A6" data-fx="=runway(cash, burn)">Burn and runway</div>
+    <div class="rn">7</div>
+    <div class="row" data-ref="A7" data-fx="=runway(cash, burn)"><div class="cell cs" tabindex="0" data-fx="=runway(cash, burn)"><p>Alongside the deal, the founders asked a simple question. If this doesn't go through, how long is our runway and what should we cut?</p>
     <p>The only way the team tracked burn was looking at the bank balance each month. Sophie pulled the raw data from each source and tied it to the books, then built a dashboard for burn and runway on top of it. It has a cash forecast tested against past months, and a cut board that shows when each cut would actually hit the bank.</p>
     <figure>
       <img src="/case-study/img/burn-forecast.jpg" alt="Cash forecast." loading="lazy">
@@ -72,10 +80,10 @@
       <div><img src="/case-study/img/burn-cutboard.jpg" alt="Cut board." loading="lazy"><figcaption>Cut board.</figcaption></div>
       <div><img src="/case-study/img/burn-cost.jpg" alt="Revenue and cost breakdown." loading="lazy"><figcaption>Revenue and cost breakdown.</figcaption></div>
     </div></figure></div></div>
-    <div class="rn">6</div>
-    <div class="row bar" data-ref="A6" data-fx="=FORECAST(schools, payments, saas)">The operating model</div>
-    <div class="rn">7</div>
-    <div class="row" data-ref="A7" data-fx="=FORECAST(schools, payments, saas)"><div class="cell cs" tabindex="0" data-fx="=FORECAST(schools, payments, saas)"><p>The buyer's first ask was a financial model and a forecast. Sophie built one in Excel from scratch, since nothing existed since the Series A docs. Revenue starts from the number of active schools and builds up to payments and SaaS. Headcount and opex come after that. Every line ties back to the general ledger, and a script checks every tie-out before a new version goes out.</p>
+    <div class="rn">8</div>
+    <div class="row bar" data-ref="A8" data-fx="=FORECAST(schools, payments, saas)">The operating model</div>
+    <div class="rn">9</div>
+    <div class="row" data-ref="A9" data-fx="=FORECAST(schools, payments, saas)"><div class="cell cs" tabindex="0" data-fx="=FORECAST(schools, payments, saas)"><p>The buyer's first ask was a financial model and a forecast. Sophie built one in Excel from scratch, since nothing existed since the Series A docs. Revenue starts from the number of active schools and builds up to payments and SaaS. Headcount and opex come after that. Every line ties back to the general ledger, and a script checks every tie-out before a new version goes out.</p>
     <p>The internal team did not speak Excel. They kept asking for fewer spreadsheet-style views, so she built them a dashboard on the same model. Anyone on the team could move a lever and see what happened to cash and runway without opening a workbook.</p>
     <figure>
       <img src="/case-study/img/opmodel-dash.jpg" alt="The team dashboard." loading="lazy">
@@ -85,10 +93,10 @@
       <div><img src="/case-study/img/opmodel-pl.jpg" alt="The financial model the buyer got. Values replaced with grey bars." loading="lazy"><figcaption>The financial model the buyer got. Values replaced with grey bars.</figcaption></div>
       <div><img src="/case-study/img/opmodel-capacity.jpg" alt="The forecast that went with it, built up from reps, ramp, and quota." loading="lazy"><figcaption>The forecast that went with it, built up from reps, ramp, and quota.</figcaption></div>
     </div></figure></div></div>
-    <div class="rn">8</div>
-    <div class="row bar" data-ref="A8" data-fx="=COUNTA(data_room)">What went into the data room</div>
-    <div class="rn">9</div>
-    <div class="row" data-ref="A9" data-fx="=COUNTA(data_room)"><div class="cell cs" tabindex="0" data-fx="=COUNTA(data_room)"><p>Every request went back with something built during diligence. These were the bigger ones.</p>
+    <div class="rn">10</div>
+    <div class="row bar" data-ref="A10" data-fx="=COUNTA(data_room)">What went into the data room</div>
+    <div class="rn">11</div>
+    <div class="row" data-ref="A11" data-fx="=COUNTA(data_room)"><div class="cell cs" tabindex="0" data-fx="=COUNTA(data_room)"><p>Every request went back with something built during diligence. These were the bigger ones.</p>
     <ul class="plain">
       <li>A quality of earnings pack with revenue and ARR by customer, and a key that matches customers across every system.</li>
       <li>A payments databook by location and card type, tied to the fee ledger.</li>
@@ -101,7 +109,7 @@
     
     
   </div></div>
-    <div class="rn">10</div>
+    <div class="rn">12</div>
     <div class="row"><div class="cell"><p><b>Heading into a raise or a sale without a finance person?</b></p><p class="ctas" style="margin-top:10px"><a class="btn go" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="btn" href="mailto:sophie@getvantidge.com">Email us</a></p></div></div>
   </div>
   <div class="bottom">
@@ -109,6 +117,6 @@
     <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span></div>
   </div>
 </div>
-<script src="/xl.js?v=11"></script>
+<script src="/xl.js?v=12"></script>
 </body>
 </html>

@@ -7,9 +7,12 @@
 
     function mailto(company) {
       var co = company.trim() || 'my company';
-      var subject = 'Preview password for ' + co;
+      var subject = 'The password for ' + co + ', please';
       var body = 'Hi Sophie,\n\n' +
-        "I'm at " + co + ' and would like the password for the preview you built for us.\n\n' +
+        "I'm at " + co + '. I hear you built us a finance function without asking. ' +
+        "That's either very flattering or a little alarming, and I'd like to find out which.\n\n" +
+        'Can I have the password?\n\n' +
+        'For the record, our current finance team is: ______\n\n' +
         'Best,\n';
       return 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
@@ -31,8 +34,8 @@
           var m = $('msg'); m.className = ''; m.textContent = "There isn't a preview for " + company + ' yet. ';
           var a = document.createElement('a');
           a.href = 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Build one for ' + company) +
-            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I'd like to see what Vantidge would build for us.\n\nBest,\n");
-          a.textContent = 'Request one.';
+            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I tried the door and there was nothing behind it. I'd like to see what you'd build for us.\n\nBest,\n");
+          a.textContent = 'Want us to?';
           m.appendChild(a);
           return;
         }
