@@ -26,7 +26,7 @@
   </div>
   <div class="sheet legal">
     <div class="rn">1</div>
-    <div class="row" data-ref="A1" data-fx="=&quot;Privacy policy&quot;"><div class="cell" tabindex="0" data-fx="=&quot;Privacy policy&quot;"><h1>Privacy policy</h1><p class="lede">What we collect, what we do with it, and what we never do with it.</p><p class="muted">Effective October 12, 2026.</p></div></div>
+    <div class="row" data-ref="A1" data-fx="=&quot;Privacy policy&quot;"><div class="cell" tabindex="0" data-fx="=&quot;Privacy policy&quot;"><h1>Privacy policy</h1><p class="lede">What we collect, what we do with it, and what we never do with it.</p><p class="muted">Effective October 13, 2026.</p></div></div>
     <div class="rn">2</div>
     <div class="row bar" data-ref="A2" data-fx="=&quot;Who we are&quot;">Who we are</div>
     <div class="rn">3</div>
@@ -34,7 +34,7 @@
     <div class="rn">4</div>
     <div class="row bar" data-ref="A4" data-fx="=&quot;What we collect&quot;">What we collect</div>
     <div class="rn">5</div>
-    <div class="row" data-ref="A5" data-fx="=&quot;What we collect&quot;"><div class="cell" tabindex="0" data-fx="=&quot;What we collect&quot;"><p>We collect only what the console needs to work for your company.</p><ul><li><b>Your account.</b> Your name and email address. If you sign in with Google, we get your name, email and profile photo from Google.</li><li><b>Data from systems you connect.</b> That can be Stripe, Bill.com, Mercury, QuickBooks Online, HubSpot or ClickHouse. We only pull from the ones you connect.</li><li><b>Files you upload.</b> Bank and card statements, payroll registers and Excel workbooks.</li><li><b>Access keys you enter.</b> We store them encrypted and never show them back to anyone.</li><li><b>Basic logs.</b> Sign-in times, sync results and errors. We use them to keep the service running.</li></ul></div></div>
+    <div class="row" data-ref="A5" data-fx="=&quot;What we collect&quot;"><div class="cell" tabindex="0" data-fx="=&quot;What we collect&quot;"><p>We collect only what the console needs to work for your company.</p><ul><li><b>Your account.</b> Your name and email address. If you sign in with Google, we get your name, email and profile photo from Google.</li><li><b>Data from systems you connect.</b> That can be Stripe, Bill.com, Mercury, QuickBooks Online, HubSpot or ClickHouse. We only pull from the ones you connect.</li><li><b>Files you upload.</b> Bank and card statements, payroll registers and Excel workbooks.</li><li><b>Access keys and logins you enter.</b> We keep them in Google Secret Manager and keep a backup copy in a second Vantidge project. You should never have to enter one twice. Vantidge staff who run your console can see them.</li><li><b>Basic logs.</b> Sign-in times, sync results and errors. We use them to keep the service running.</li></ul></div></div>
     <div class="rn">6</div>
     <div class="row bar" data-ref="A6" data-fx="=&quot;How we use it&quot;">How we use it</div>
     <div class="rn">7</div>
@@ -42,11 +42,11 @@
     <div class="rn">8</div>
     <div class="row bar" data-ref="A8" data-fx="=&quot;QuickBooks data&quot;">QuickBooks data</div>
     <div class="rn">9</div>
-    <div class="row" data-ref="A9" data-fx="=&quot;QuickBooks data&quot;"><div class="cell" tabindex="0" data-fx="=&quot;QuickBooks data&quot;"><p>If you connect QuickBooks Online, you approve read-only access in Intuit's own sign-in screen. We pull your chart of accounts, reports and transactions so the console can tie your numbers to your books. We never write to your QuickBooks company.</p><p>We use QuickBooks data only to provide the service to you. We do not sell it or use it for advertising. You can disconnect at any time on the Setup page or inside QuickBooks. Once you disconnect, we stop pulling new data. Ask us and we will delete what we already have.</p></div></div>
+    <div class="row" data-ref="A9" data-fx="=&quot;QuickBooks data&quot;"><div class="cell" tabindex="0" data-fx="=&quot;QuickBooks data&quot;"><p>If you connect QuickBooks Online, you approve access in Intuit's own sign-in screen. We pull your chart of accounts, reports and transactions so the console can tie your numbers to your books. We never write to your QuickBooks company.</p><p>We use QuickBooks data only to provide the service to you. We do not sell it or use it for advertising. You can disconnect at any time on the Setup page or inside QuickBooks. Once you disconnect, we stop pulling new data. Ask us and we will delete what we already have.</p></div></div>
     <div class="rn">10</div>
     <div class="row bar" data-ref="A10" data-fx="=&quot;Who can see it&quot;">Who can see it</div>
     <div class="rn">11</div>
-    <div class="row" data-ref="A11" data-fx="=&quot;Who can see it&quot;"><div class="cell" tabindex="0" data-fx="=&quot;Who can see it&quot;"><ul><li>People at your company who you invite, or who sign in with your company email if you ask us to allow that.</li><li>Vantidge staff who set up and run your console. Access is limited to what the work needs.</li><li>The service providers below, only so they can run their part of the service.</li></ul></div></div>
+    <div class="row" data-ref="A11" data-fx="=&quot;Who can see it&quot;"><div class="cell" tabindex="0" data-fx="=&quot;Who can see it&quot;"><ul><li>People at your company who you invite, or who sign in with your company email if you ask us to allow that.</li><li>Vantidge staff who set up and run your console. They can see your data and the access keys and logins you enter.</li><li>The service providers below, only so they can run their part of the service.</li></ul></div></div>
     <div class="rn">12</div>
     <div class="row bar" data-ref="A12" data-fx="=&quot;Service providers&quot;">Service providers</div>
     <div class="rn">13</div>
@@ -54,7 +54,7 @@
     <div class="rn">14</div>
     <div class="row bar" data-ref="A14" data-fx="=&quot;How we protect it&quot;">How we protect it</div>
     <div class="rn">15</div>
-    <div class="row" data-ref="A15" data-fx="=&quot;How we protect it&quot;"><div class="cell" tabindex="0" data-fx="=&quot;How we protect it&quot;"><p>Data is encrypted in transit and at rest. Access keys sit in Google Secret Manager. Where a source offers read-only access we ask only for that. Each company's data lives in its own database with its own access account.</p></div></div>
+    <div class="row" data-ref="A15" data-fx="=&quot;How we protect it&quot;"><div class="cell" tabindex="0" data-fx="=&quot;How we protect it&quot;"><p>Data is encrypted in transit and at rest. Access keys sit in Google Secret Manager. Each company's data lives in its own database with its own access account.</p></div></div>
     <div class="rn">16</div>
     <div class="row bar" data-ref="A16" data-fx="=&quot;How long we keep it&quot;">How long we keep it</div>
     <div class="rn">17</div>
