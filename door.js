@@ -28,11 +28,11 @@
         var id = b64(await crypto.subtle.digest('SHA-256', enc.encode('vantidge:' + norm(company))));
         var entry = (window.SPECS || {})[id];
         if (!entry) {
-          var m = $('msg'); m.className = ''; m.textContent = "I haven't built one for " + company + ' yet. ';
+          var m = $('msg'); m.className = ''; m.textContent = "There isn't a preview for " + company + ' yet. ';
           var a = document.createElement('a');
           a.href = 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Build one for ' + company) +
-            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I'd like to see what you would build for us.\n\nBest,\n");
-          a.textContent = 'Want me to?';
+            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I'd like to see what Vantidge would build for us.\n\nBest,\n");
+          a.textContent = 'Request one.';
           m.appendChild(a);
           return;
         }
@@ -51,7 +51,7 @@
         say('Opening ' + spec.name + '.');
         location.href = spec.url + '?k=' + encodeURIComponent(spec.k);
       } catch (err) {
-        say('Something went wrong. Email me and I will send you the link.', 'bad');
+        say('Something went wrong. Email us and we will send you the link.', 'bad');
       } finally {
         $('go').disabled = false;
       }

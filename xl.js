@@ -268,7 +268,7 @@
     { k: 'when', q: 'When?', opts: [ ['now', 'This month'], ['qtr', 'This quarter'], ['year', 'This year'], ['someday', 'Someday'] ] },
     { k: 'who', q: 'Who does finance today?', opts: [ ['nobody', 'Nobody, really'], ['me', 'Me, at night'], ['bk', 'A bookkeeper'], ['acct', 'An outside accountant'] ] },
     { k: 'ask', q: 'What do you want out of this?', opts: [ ['what', "Ask what you'd do for us"], ['call', 'Schedule a call'], ['other', 'Something else'] ] },
-    { k: 'you', q: 'Who should I write back to?', input: true }
+    { k: 'you', q: 'Who should we write back to?', input: true }
   ];
   var TXT = {
     topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", data: "Our numbers live in too many systems and nobody trusts which one is right.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
@@ -337,7 +337,7 @@
       var cal = !preset && ans.ask === 'call' && CAL;
       var calUrl = cal ? CAL + (CAL.indexOf('?') < 0 ? '?' : '&') + 'name=' + encodeURIComponent(ans.name || '') : '';
       B.innerHTML = (preset ? '' : dots()) + '<p class="mq">' + (preset ? 'Here it is.' : cal ? 'Pick a time.' : 'Done. You just have to press send.') + '</p>' +
-        (cal ? '<a class="btn go mcal" href="' + calUrl + '" target="_blank" rel="noopener">Open my calendar</a><p class="small muted" style="margin:10px 0 8px">Or send a note first.</p>' : '') +
+        (cal ? '<a class="btn go mcal" href="' + calUrl + '" target="_blank" rel="noopener">Pick a time</a><p class="small muted" style="margin:10px 0 8px">Or send a note first.</p>' : '') +
         '<div class="mmail"><div class="mrow"><span>To</span><b>' + TO + '</b></div>' +
         '<div class="mrow"><span>Subject</span><input id="mSu" value="' + esc(m.su) + '"></div>' +
         '<textarea id="mTx" rows="9">' + esc(m.body) + '</textarea></div>' +
