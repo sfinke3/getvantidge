@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vantidge</title>
-  <meta name="description" content="Strategic finance without the full-time hire. I build your operating model and run the diligence work when a raise or a sale comes. Run entirely by Sophie Finke.">
+  <meta name="description" content="Strategic finance without the full-time hire. Your systems connected, an operating model on your real books, and a console your team signs into. Diligence and raise support when you need it.">
   <meta property="og:title" content="Vantidge">
-  <meta property="og:description" content="Strategic finance without the full-time hire. Run entirely by Sophie Finke.">
+  <meta property="og:description" content="Strategic finance without the full-time hire. Your systems connected, an operating model on your real books, and a console your team signs into.">
   <meta property="og:url" content="https://getvantidge.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Vantidge">
@@ -20,54 +20,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css?v=10">
+  <link rel="stylesheet" href="/xl.css?v=11">
 </head>
 <body>
 <div class="app">
 
   <div class="top">
-    <div class="title"><b>Vantidge.xlsx</b><span class="hide-sm">Run entirely by Sophie Finke</span></div>
+    <div class="title"><a class="brand" href="/">Vantidge</a><nav class="tnav"><a class="hide-sm" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="tsign" href="https://app.getvantidge.com">Sign in</a></nav></div>
     <div class="fx"><div class="ref" id="ref">A1</div><div class="lbl">fx</div><div class="f" id="fx"></div></div>
     <div class="colhdr"><div></div><div>A</div><div>B</div></div>
   </div>
 
   <div class="sheet" id="sheet">
 
-    <!-- 1 hero -->
     <div class="rn">1</div>
-    <div class="row two" data-ref="A1" data-fx="=strategic_finance - full_time_hire">
-      <div class="cell has-note" tabindex="0" data-fx="=strategic_finance - full_time_hire">
+    <div class="row" data-ref="A1" data-fx="=strategic_finance - full_time_hire">
+      <div class="cell hero" tabindex="0" data-fx="=strategic_finance - full_time_hire">
         <h1>Strategic finance without the full&#8209;time&nbsp;hire.</h1>
-        <p class="lede">I connect your data and build your operating model. When a raise or a sale comes, I run the diligence work behind it.</p>
-        <a class="btn go" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Tell me what's coming up</a>
-        <p class="runby">Run entirely by Sophie Finke.</p>
-        <div class="note"><b>Sophie Finke:</b>Blue cells are inputs. Black cells are formulas. Click around.</div>
-      </div>
-      <div class="cell door" id="door" tabindex="0" data-fx="=OPEN(company, password)">
-        <h3>I may have already built yours.</h3>
-        <p class="muted small">Sometimes I build a preview of what I'd do for a company before we've talked, using only public information. If I emailed you a password, open yours here.</p>
-        <form id="f" autocomplete="off" style="margin-top:8px">
-          <div class="field"><label for="co">Company</label><input id="co" name="co" required></div>
-          <div class="field"><label for="pw">Password</label><input id="pw" name="pw" type="password" required></div>
-          <button class="btn" type="submit" id="go">=OPEN()</button>
-          <p id="msg" role="status"></p>
-        </form>
-        <p class="muted small">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
+        <p class="lede">I connect the systems your numbers live in, build your operating model on your real books, and give your team a console to run the company from. When a raise or a sale comes, I run the diligence behind it.</p>
+        <p class="ctas"><a class="btn go" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="btn" href="mailto:sophie@getvantidge.com?subject=What%27s%20coming%20up">Email me</a></p>
+        <p class="runby">Already a client? <a href="https://app.getvantidge.com">Sign in</a>.</p>
       </div>
     </div>
 
-    <!-- 2 bar -->
     <div class="rn">2</div>
     <div class="row bar" data-ref="A2" data-fx="=&quot;The model now. Diligence when you need it.&quot;">The model now. Diligence when you need it.</div>
 
-    <!-- 3 model -->
     <div class="rn">3</div>
     <div class="row two" data-ref="A3" data-fx="=FORECAST(drivers, tie_out = TRUE)">
       <div class="cell" tabindex="0" data-fx="=FORECAST(drivers, tie_out = TRUE)">
         <h3>The model</h3>
         <p>I build it from what actually drives your business and tie it to your books. Your deck and board materials pull from the same numbers.</p>
-        <p>If your team won't open Excel, I put a dashboard on top of it.</p>
-        <p class="muted small" style="margin-top:14px">Click the scenarios on the chart.</p>
+        <p>It lives in the console as dashboards anyone can read, and downloads as an Excel file with live formulas for anyone who wants the workbook.</p>
+        <p class="muted small" style="margin-top:14px">Pick a scenario on the chart.</p>
       </div>
       <div class="cell" tabindex="0" data-fx="=CHART(cash_balance, scenario)">
         <div class="chart rv" id="cashChart">
@@ -87,26 +72,25 @@
       </div>
     </div>
 
-    <!-- 4 data -->
     <div class="rn">4</div>
     <div class="row two" data-ref="A4" data-fx="=REFRESH.ALL(sources)">
       <div class="cell" tabindex="0" data-fx="=REFRESH.ALL(sources)">
         <h3>The data</h3>
         <p>Most arguments about the numbers are really about which system is right. I connect the systems your numbers live in and pull them into one place every night.</p>
-        <p>Then I map which system is the source of truth for each number, and the model reads from there. Nobody types numbers in by hand.</p>
-        <p>On the trading desk I automated processes in Python and kdb+/q and built real-time monitoring tools. Same job, different data.</p>
+        <p>Then I map which system is the source of truth for each number, and the model reads from there. Checks flag anything that doesn't tie. Nobody types numbers in by hand.</p>
+        <p>For anything without a connection, you upload the file: statements, payroll registers, workbooks.</p>
       </div>
       <div class="cell" tabindex="0" data-fx="=REFRESH.ALL(sources)">
         <div class="chart rv qc" id="qc">
           <div class="qhead"><b>Queries &amp; Connections</b><button class="btn" id="qRefresh">Refresh All</button></div>
           <svg class="qflow" id="qflow" viewBox="0 0 460 190" role="img" aria-label="Data flowing from six sources into the model"></svg>
           <ul class="qlist">
+            <li data-rows="9,871"><span class="qi">&#9638;</span><span class="qn">QuickBooks Online<small>general ledger</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="6,530"><span class="qi">&#9638;</span><span class="qn">Mercury and other banks<small>every account and card</small></span><span class="qs">Not loaded</span></li>
             <li data-rows="18,204"><span class="qi">&#9638;</span><span class="qn">Stripe<small>charges, payouts, fees</small></span><span class="qs">Not loaded</span></li>
-            <li data-rows="9,871"><span class="qi">&#9638;</span><span class="qn">General ledger<small>QuickBooks or NetSuite</small></span><span class="qs">Not loaded</span></li>
-            <li data-rows="3,412"><span class="qi">&#9638;</span><span class="qn">CRM<small>Salesforce or HubSpot</small></span><span class="qs">Not loaded</span></li>
-            <li data-rows="6,530"><span class="qi">&#9638;</span><span class="qn">Bank and cards<small>every account</small></span><span class="qs">Not loaded</span></li>
-            <li data-rows="1,188"><span class="qi">&#9638;</span><span class="qn">Payroll<small>headcount and cost</small></span><span class="qs">Not loaded</span></li>
-            <li data-rows="52,960"><span class="qi">&#9638;</span><span class="qn">Warehouse<small>Snowflake or your product DB</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="2,147"><span class="qi">&#9638;</span><span class="qn">Bill.com<small>bills and payments</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="3,412"><span class="qi">&#9638;</span><span class="qn">HubSpot<small>deals and pipeline</small></span><span class="qs">Not loaded</span></li>
+            <li data-rows="52,960"><span class="qi">&#9638;</span><span class="qn">ClickHouse<small>product usage</small></span><span class="qs">Not loaded</span></li>
           </ul>
           <div class="qtie" id="qtie"><span>Tie-outs</span><b id="qtieV">&nbsp;</b></div>
           <div class="cs" style="text-align:left;margin-top:6px">Sample refresh. Your systems will differ.</div>
@@ -114,13 +98,35 @@
       </div>
     </div>
 
-    <!-- 5 diligence -->
     <div class="rn">5</div>
-    <div class="row two" data-ref="A5" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
+    <div class="row two" data-ref="A5" data-fx="=CONSOLE(model, dashboards, board)">
+      <div class="cell" tabindex="0" data-fx="=CONSOLE(model, dashboards, board)">
+        <h3>The console</h3>
+        <p>Your team signs in at app.getvantidge.com. The model, the dashboards and the board pages are all there, along with a page that shows how current every number is and when each system last refreshed.</p>
+        <p>You decide who sees what. Board members can see the dashboards and nothing else. Whoever holds a login can connect that system without seeing a single number.</p>
+      </div>
+      <div class="cell" tabindex="0" data-fx="=ROLES(team)">
+        <div class="chart rv">
+          <table class="trk">
+            <thead><tr><th>Role</th><th>Sees</th></tr></thead>
+            <tbody>
+              <tr><td>Admin</td><td>Everything, including systems and the team</td></tr>
+              <tr><td>Editor</td><td>The model, and can propose changes</td></tr>
+              <tr><td>Viewer</td><td>The model and dashboards</td></tr>
+              <tr><td>Board</td><td>Dashboards only</td></tr>
+              <tr><td>Connector</td><td>Connects systems, sees no numbers</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="rn">6</div>
+    <div class="row two" data-ref="A6" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
       <div class="cell" tabindex="0" data-fx="=COUNTIF(requests, &quot;answered&quot;)">
         <h3>The diligence</h3>
         <p>When the request list shows up, I run the war room. I set up the data room and track every request. Then I work with your team until each answer is written and posted.</p>
-        <p>Nothing sits in the queue without an owner.</p>
+        <p>Because the model and the data are already in place, most answers start from numbers that already tie.</p>
       </div>
       <div class="cell" tabindex="0" data-fx="=TRACKER(request_list)">
         <div class="chart rv" id="trk">
@@ -144,14 +150,13 @@
       </div>
     </div>
 
-    <!-- 5 raise -->
-    <div class="rn">6</div>
-    <div class="row two" data-ref="A6" data-fx="=raise / (pre_money + raise)">
+    <div class="rn">7</div>
+    <div class="row two" data-ref="A7" data-fx="=raise / (pre_money + raise)">
       <div class="cell" tabindex="0" data-fx="=raise / (pre_money + raise)">
         <h3>Before a raise</h3>
         <p>I size the round off the cash plan and show what the terms do to the founders' ownership.</p>
         <p>Your lawyers handle the documents. I make sure the numbers behind them hold up.</p>
-        <p class="muted small" style="margin-top:14px">Change the blue cells.</p>
+        <p class="muted small" style="margin-top:14px">Blue cells are inputs.</p>
       </div>
       <div class="cell" tabindex="0" data-fx="=founders * (1 - new_investor - pool_top_up)">
         <div class="chart rv">
@@ -175,75 +180,105 @@
       </div>
     </div>
 
-    <!-- 6 bar -->
-    <div class="rn">7</div>
-    <div class="row bar" data-ref="A7" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">Track record</div>
-
-    <!-- 7 track record -->
     <div class="rn">8</div>
-    <div class="row two" data-ref="A8" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
+    <div class="row bar" id="how" data-ref="A8" data-fx="=STEPS(call, connect, build, run)">How it works</div>
+
+    <div class="rn">9</div>
+    <div class="row" data-ref="A9" data-fx="=STEPS(call, connect, build, run)">
+      <div class="cell" tabindex="0" data-fx="=STEPS(call, connect, build, run)">
+        <table class="tbl steps">
+          <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td><b>1. A call</b></td><td>Thirty minutes on what's coming up, who does finance today, and where your numbers live.</td></tr>
+            <tr><td><b>2. Connect</b></td><td>I set up a workspace for your company and invite your team. Whoever holds each login connects that system from one page. Keys are stored encrypted and never shown again in full.</td></tr>
+            <tr><td><b>3. Build</b></td><td>I map the source of truth for each number, pull your history, and build the model from your drivers, tied to the ledger.</td></tr>
+            <tr><td><b>4. Run</b></td><td>Data refreshes every night and actuals fill in as each month closes. I keep the model, the dashboards and the board materials current, and work through the numbers with you.</td></tr>
+            <tr><td><b>5. When it counts</b></td><td>A raise, a sale, or a buyer who calls first. I run the diligence and the round math off the same model.</td></tr>
+          </tbody>
+        </table>
+        <p class="muted small" style="margin-top:10px">How your data is handled: <a href="/security/">Security</a>.</p>
+      </div>
+    </div>
+
+    <div class="rn">10</div>
+    <div class="row bar" data-ref="A10" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">Track record</div>
+
+    <div class="rn">11</div>
+    <div class="row two" data-ref="A11" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
       <div class="cell" tabindex="0" data-fx="=VLOOKUP(&quot;Playground&quot;, deals, 2, FALSE)">
         <h3>Playground</h3>
         <p>Acquired by Procare Solutions, a Roper Technologies company, in September 2026. There was no banker and no finance team. I built the model and ran the diligence war room with the three founders.</p>
-        <p style="margin-top:14px"><a class="btn" href="/case-study/">Open the case study</a></p>
+        <p style="margin-top:14px"><a class="btn" href="/case-study/">Read the case study</a></p>
       </div>
-      <div class="cell" tabindex="0" data-fx="=SUM(B8:B10)">
+      <div class="cell" tabindex="0" data-fx="=SUM(B11:B13)">
         <div class="nums" id="nums">
           <span>Requests answered</span><span class="v" data-n="439"><i class="db"></i><span>0</span></span>
           <span>Files handed over</span><span class="v" data-n="714"><i class="db"></i><span>0</span></span>
           <span>Diligence calls</span><span class="v" data-n="27"><i class="db"></i><span>0</span></span>
-          <span>Bankers</span><span class="v has-note" tabindex="0"><span>&ndash;</span><div class="note"><b>Sophie Finke:</b>Not a blank cell. Zero bankers.</div></span>
+          <span>Bankers</span><span class="v"><span>0</span></span>
         </div>
-        <p class="muted small" style="margin-top:10px">Drag across the numbers, or click them, and check the status bar.</p>
       </div>
     </div>
 
-    <!-- 8 bar -->
-    <div class="rn">9</div>
-    <div class="row bar" data-ref="A9" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">Check</div>
+    <div class="rn">12</div>
+    <div class="row bar" data-ref="A12" data-fx="=FIT(company)">Who this is for</div>
 
-    <!-- 9 check -->
-    <div class="rn">10</div>
-    <div class="row two" data-ref="A10" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
-      <div class="cell" tabindex="0" data-fx="=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), &quot;&quot;)">
-        <h3>This is for you if</h3>
-        <ul class="chk" id="chk">
-          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You're hiring for strategic finance, or know you should be.</span></li>
-          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>You don't have an operating model, or you have one nobody trusts.</span></li>
-          <li><button class="box" aria-pressed="false" aria-label="Tick"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></button><span>A raise or a sale is on the horizon, even a distant one.</span></li>
+    <div class="rn">13</div>
+    <div class="row two" data-ref="A13" data-fx="=FIT(company)">
+      <div class="cell" tabindex="0" data-fx="=FIT(company)">
+        <h3>A good fit</h3>
+        <ul class="off">
+          <li>You're hiring for strategic finance, or know you should be.</li>
+          <li>You don't have an operating model, or you have one nobody trusts.</li>
+          <li>A raise or a sale is on the horizon, even a distant one.</li>
         </ul>
-        <div class="fit" id="fit">=IF(COUNTIF(B10:B12, TRUE) &gt; 0, EMAIL(), "")</div>
       </div>
-      <div class="cell" tabindex="0" data-fx="=NOT(fit)">
-        <h3 class="muted">It's not for you if</h3>
-        <ul class="chk not">
-          <li><span class="box" style="border-color:#bbb"></span><span>You already have a CFO who builds models.</span></li>
-          <li><span class="box" style="border-color:#bbb"></span><span>You need bookkeeping.</span></li>
+      <div class="cell" tabindex="0" data-fx="=NOT(FIT(company))">
+        <h3 class="muted">Not a fit</h3>
+        <ul class="off not">
+          <li>You already have a CFO who builds models.</li>
+          <li>You need bookkeeping.</li>
         </ul>
       </div>
     </div>
 
-    <!-- 10 about -->
-    <div class="rn">11</div>
-    <div class="row" data-ref="A11" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
+    <div class="rn">14</div>
+    <div class="row" data-ref="A14" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
       <div class="cell" tabindex="0" data-fx="=CONCAT(&quot;RBC&quot;, &quot;Wharton&quot;, &quot;Playground&quot;)">
-        <p>I'm Sophie. Three years on RBC's index trading desk, then Wharton, then Playground. I build software too. That's how a deal tracker ends up with a gossip column.</p>
-        <p style="margin-top:12px"><b>Who does finance today?</b> If the answer is nobody, <a href="mailto:sophie@getvantidge.com">email me</a>.</p>
+        <h3>Who you work with</h3>
+        <p>Vantidge is Sophie Finke. Three years on RBC's index trading desk, a Wharton MBA, then the Playground sale. You work with me directly, not a junior team. <a href="/about/">About</a></p>
+        <p class="ctas" style="margin-top:14px"><a class="btn go" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="btn" href="mailto:sophie@getvantidge.com">Email me</a></p>
       </div>
     </div>
 
-    <div class="rn">12</div><div class="row" style="min-height:44px"></div>
-    <div class="rn">13</div><div class="row" style="min-height:44px"></div>
+    <div class="rn">15</div>
+    <div class="row two" data-ref="A15" data-fx="=OPEN(company, password)">
+      <div class="cell" tabindex="0" data-fx="=OPEN(company, password)">
+        <h3>Open your preview</h3>
+        <p class="muted small">Sometimes I build a preview of what I'd do for a company before we've talked, using only public information. If I sent you a password, open yours here.</p>
+      </div>
+      <div class="cell door" id="door" tabindex="0" data-fx="=OPEN(company, password)">
+        <form id="f" autocomplete="off">
+          <div class="field"><label for="co">Company</label><input id="co" name="co" required></div>
+          <div class="field"><label for="pw">Password</label><input id="pw" name="pw" type="password" required></div>
+          <button class="btn" type="submit" id="go">Open</button>
+          <p id="msg" role="status"></p>
+        </form>
+        <p class="muted small">Don't know the password? <a id="ask" href="mailto:sophie@getvantidge.com">Email me</a>.</p>
+      </div>
+    </div>
+
+    <div class="rn">16</div><div class="row" style="min-height:44px"></div>
   </div>
 
   <div class="bottom">
-    <div class="tabs"><a class="on" href="/">Home</a><a href="/about/">About</a><a href="/case-study/">Case study</a><a href="/#door">See your company</a><a href="mailto:sophie@getvantidge.com">Email</a></div>
-    <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><span>100%</span></span></div>
+    <div class="tabs"><a class="on" href="/">Home</a><a href="/#how">How it works</a><a href="/case-study/">Case study</a><a href="/security/">Security</a><a href="/about/">About</a><a href="/#door">Open your preview</a></div>
+    <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span></div>
   </div>
 </div>
 
-<script src="/see-your-company/specs.js?v=10"></script>
-<script src="/door.js?v=10"></script>
-<script src="/xl.js?v=10"></script>
+<script src="/see-your-company/specs.js?v=11"></script>
+<script src="/door.js?v=11"></script>
+<script src="/xl.js?v=11"></script>
 </body>
 </html>

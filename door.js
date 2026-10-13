@@ -7,12 +7,9 @@
 
     function mailto(company) {
       var co = company.trim() || 'my company';
-      var subject = 'The password for ' + co + ', please';
+      var subject = 'Preview password for ' + co;
       var body = 'Hi Sophie,\n\n' +
-        "I'm at " + co + '. I hear you built us a finance function without asking. ' +
-        "That's either very flattering or a little alarming, and I'd like to find out which.\n\n" +
-        'Can I have the password?\n\n' +
-        'For the record, our current finance team is: ______\n\n' +
+        "I'm at " + co + ' and would like the password for the preview you built for us.\n\n' +
         'Best,\n';
       return 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
@@ -34,7 +31,7 @@
           var m = $('msg'); m.className = ''; m.textContent = "I haven't built one for " + company + ' yet. ';
           var a = document.createElement('a');
           a.href = 'mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Build one for ' + company) +
-            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I tried the door and there was nothing behind it. I'd like to see what you'd build for us.\n\nBest,\n");
+            '&body=' + encodeURIComponent('Hi Sophie,\n\nI\'m at ' + company + ". I'd like to see what you would build for us.\n\nBest,\n");
           a.textContent = 'Want me to?';
           m.appendChild(a);
           return;
@@ -54,7 +51,7 @@
         say('Opening ' + spec.name + '.');
         location.href = spec.url + '?k=' + encodeURIComponent(spec.k);
       } catch (err) {
-        say('Something broke on my end. Email me and I will send you the link.', 'bad');
+        say('Something went wrong. Email me and I will send you the link.', 'bad');
       } finally {
         $('go').disabled = false;
       }

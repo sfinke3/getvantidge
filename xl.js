@@ -169,7 +169,7 @@
     a[0].style.width = F * keep * 100 + '%'; a[1].style.width = (1 - F) * keep * 100 + '%';
     a[2].style.width = pool * 100 + '%'; a[3].style.width = n * 100 + '%';
   }
-  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B6'); }); });
+  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B7'); }); });
   onShow($('#stAfter') && $('#stAfter').closest('.chart'), recalc);
 
   /* ---------- track record: count up, data bars, pick to sum ---------- */
@@ -186,7 +186,7 @@
     if (!p.length) { aggEl.textContent = ''; return; }
     var s = p.reduce(function (a, b) { return a + b; }, 0);
     aggEl.textContent = 'Average: ' + fmt(s / p.length) + '   Count: ' + p.length + '   Sum: ' + fmt(s);
-    setFx('=SUM(' + p.join(', ') + ')', 'B8');
+    setFx('=SUM(' + p.join(', ') + ')', 'B11');
     clicked = Date.now();
   }
   vals.forEach(function (v) {
@@ -196,30 +196,10 @@
   });
   document.addEventListener('mouseup', function () { dragging = false; });
 
-  /* ---------- fit check ---------- */
-  var boxes = $$('#chk .box'), fit = $('#fit');
-  boxes.forEach(function (b) {
-    b.addEventListener('click', function (e) {
-      e.stopPropagation();
-      b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on'));
-      var n = boxes.filter(function (x) { return x.classList.contains('on'); }).length;
-      calc();
-      if (n) {
-        fit.className = 'fit yes';
-        fit.innerHTML = 'TRUE (' + n + ' of 3). <a href="mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Checked ' + n + ' of 3') + '">=EMAIL(&quot;Sophie&quot;)</a>';
-      } else {
-        fit.className = 'fit';
-        fit.textContent = '=IF(COUNTIF(B10:B12, TRUE) > 0, EMAIL(), "")';
-      }
-      setFx('=COUNTIF(B10:B12, TRUE)  →  ' + n, 'A10');
-      clicked = Date.now();
-    });
-  });
-
   /* ---------- queries & connections ---------- */
   var qBtn = $('#qRefresh'), qRan = false;
   var flow = $('#qflow'), NS = 'http://www.w3.org/2000/svg';
-  var SRC = ['Stripe', 'Ledger', 'CRM', 'Bank', 'Payroll', 'Warehouse'];
+  var SRC = ['Ledger', 'Bank', 'Stripe', 'Bills', 'CRM', 'Usage'];
   function mk(tag, at, parent) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); (parent || flow).appendChild(e); return e; }
   if (flow) {
     var MX = 340, MY = 95;
@@ -272,22 +252,7 @@
     onShow($('#qc'), function () { if (!qRan) { qRan = true; setTimeout(refreshAll, 400); } });
   }
 
-  /* ---------- autofilter on the About table ---------- */
-  var bf = $('#builtF');
-  if (bf) bf.addEventListener('change', function () {
-    var v = bf.value, n = 0;
-    $$('#builtTbl tbody tr').forEach(function (tr) { var on = !v || tr.dataset.type === v; tr.style.display = on ? '' : 'none'; if (on) n++; });
-    $('#builtN').textContent = n; calc();
-    setFx(v ? '=FILTER(things_built, type = "' + v + '")' : '=COUNTA(things_built)', 'A5'); clicked = Date.now();
-    status(n + ' of ' + $$('#builtTbl tbody tr').length + ' records found', 2500);
-  });
-
   /* ---------- small things ---------- */
-  document.addEventListener('keydown', function (e) {
-    if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'S')) {
-      e.preventDefault(); status('Saved. There was nothing to save, it\'s a website.', 3500);
-    }
-  });
   if (fxEl) setFx(rows[0] ? rows[0].dataset.fx : '', 'A1');
   if (rows[0]) { current = rows[0]; rnFor(rows[0]).classList.add('on'); }
 })();
@@ -419,7 +384,7 @@
     d.classList.remove('ants'); void d.offsetWidth; d.classList.add('ants');
     setTimeout(function () { var i = document.getElementById('co'); if (i) i.focus({ preventScroll: true }); }, 450);
     var ref = document.getElementById('ref'), fx = document.getElementById('fx');
-    if (ref) ref.textContent = 'B1'; if (fx) fx.textContent = '=OPEN(company, password)';
+    if (ref) ref.textContent = 'B15'; if (fx) fx.textContent = '=OPEN(company, password)';
     return true;
   }
   document.addEventListener('click', function (e) {
