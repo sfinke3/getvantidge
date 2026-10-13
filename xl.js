@@ -169,7 +169,7 @@
     a[0].style.width = F * keep * 100 + '%'; a[1].style.width = (1 - F) * keep * 100 + '%';
     a[2].style.width = pool * 100 + '%'; a[3].style.width = n * 100 + '%';
   }
-  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B6'); }); });
+  ins.forEach(function (i) { if (i) i.addEventListener('input', function () { calc(); recalc(); setFx('=' + i.id.slice(1).toLowerCase() + ' := ' + i.value, 'B7'); }); });
   onShow($('#stAfter') && $('#stAfter').closest('.chart'), recalc);
 
   /* ---------- track record: count up, data bars, pick to sum ---------- */
@@ -186,7 +186,7 @@
     if (!p.length) { aggEl.textContent = ''; return; }
     var s = p.reduce(function (a, b) { return a + b; }, 0);
     aggEl.textContent = 'Average: ' + fmt(s / p.length) + '   Count: ' + p.length + '   Sum: ' + fmt(s);
-    setFx('=SUM(' + p.join(', ') + ')', 'B8');
+    setFx('=SUM(' + p.join(', ') + ')', 'B11');
     clicked = Date.now();
   }
   vals.forEach(function (v) {
@@ -209,9 +209,9 @@
         fit.innerHTML = 'TRUE (' + n + ' of 3). <a href="mailto:sophie@getvantidge.com?subject=' + encodeURIComponent('Checked ' + n + ' of 3') + '">=EMAIL(&quot;Sophie&quot;)</a>';
       } else {
         fit.className = 'fit';
-        fit.textContent = '=IF(COUNTIF(B10:B12, TRUE) > 0, EMAIL(), "")';
+        fit.textContent = '=IF(COUNTIF(B13:B15, TRUE) > 0, EMAIL(), "")';
       }
-      setFx('=COUNTIF(B10:B12, TRUE)  →  ' + n, 'A10');
+      setFx('=COUNTIF(B13:B15, TRUE)  →  ' + n, 'A13');
       clicked = Date.now();
     });
   });
@@ -219,7 +219,7 @@
   /* ---------- queries & connections ---------- */
   var qBtn = $('#qRefresh'), qRan = false;
   var flow = $('#qflow'), NS = 'http://www.w3.org/2000/svg';
-  var SRC = ['Stripe', 'Ledger', 'CRM', 'Bank', 'Payroll', 'Warehouse'];
+  var SRC = ['Ledger', 'Bank', 'Stripe', 'Bills', 'CRM', 'Usage'];
   function mk(tag, at, parent) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); (parent || flow).appendChild(e); return e; }
   if (flow) {
     var MX = 340, MY = 95;
@@ -272,16 +272,6 @@
     onShow($('#qc'), function () { if (!qRan) { qRan = true; setTimeout(refreshAll, 400); } });
   }
 
-  /* ---------- autofilter on the About table ---------- */
-  var bf = $('#builtF');
-  if (bf) bf.addEventListener('change', function () {
-    var v = bf.value, n = 0;
-    $$('#builtTbl tbody tr').forEach(function (tr) { var on = !v || tr.dataset.type === v; tr.style.display = on ? '' : 'none'; if (on) n++; });
-    $('#builtN').textContent = n; calc();
-    setFx(v ? '=FILTER(things_built, type = "' + v + '")' : '=COUNTA(things_built)', 'A5'); clicked = Date.now();
-    status(n + ' of ' + $$('#builtTbl tbody tr').length + ' records found', 2500);
-  });
-
   /* ---------- small things ---------- */
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'S')) {
@@ -303,7 +293,7 @@
     { k: 'when', q: 'When?', opts: [ ['now', 'This month'], ['qtr', 'This quarter'], ['year', 'This year'], ['someday', 'Someday'] ] },
     { k: 'who', q: 'Who does finance today?', opts: [ ['nobody', 'Nobody, really'], ['me', 'Me, at night'], ['bk', 'A bookkeeper'], ['acct', 'An outside accountant'] ] },
     { k: 'ask', q: 'What do you want out of this?', opts: [ ['what', "Ask what you'd do for us"], ['call', 'Schedule a call'], ['other', 'Something else'] ] },
-    { k: 'you', q: 'Who should I write back to?', input: true }
+    { k: 'you', q: 'Who should we write back to?', input: true }
   ];
   var TXT = {
     topic: { raise: "We're starting to think about a raise.", sale: 'We may be selling the company, or a buyer has come to us.', hire: "We've been thinking about hiring someone for strategic finance.", model: "We don't have an operating model we trust.", data: "Our numbers live in too many systems and nobody trusts which one is right.", dd: 'We have diligence coming up and want to be ready for it.', curious: 'I came across Vantidge and wanted to learn more.' },
@@ -372,7 +362,7 @@
       var cal = !preset && ans.ask === 'call' && CAL;
       var calUrl = cal ? CAL + (CAL.indexOf('?') < 0 ? '?' : '&') + 'name=' + encodeURIComponent(ans.name || '') : '';
       B.innerHTML = (preset ? '' : dots()) + '<p class="mq">' + (preset ? 'Here it is.' : cal ? 'Pick a time.' : 'Done. You just have to press send.') + '</p>' +
-        (cal ? '<a class="btn go mcal" href="' + calUrl + '" target="_blank" rel="noopener">Open my calendar</a><p class="small muted" style="margin:10px 0 8px">Or send a note first.</p>' : '') +
+        (cal ? '<a class="btn go mcal" href="' + calUrl + '" target="_blank" rel="noopener">Pick a time</a><p class="small muted" style="margin:10px 0 8px">Or send a note first.</p>' : '') +
         '<div class="mmail"><div class="mrow"><span>To</span><b>' + TO + '</b></div>' +
         '<div class="mrow"><span>Subject</span><input id="mSu" value="' + esc(m.su) + '"></div>' +
         '<textarea id="mTx" rows="9">' + esc(m.body) + '</textarea></div>' +
@@ -419,7 +409,7 @@
     d.classList.remove('ants'); void d.offsetWidth; d.classList.add('ants');
     setTimeout(function () { var i = document.getElementById('co'); if (i) i.focus({ preventScroll: true }); }, 450);
     var ref = document.getElementById('ref'), fx = document.getElementById('fx');
-    if (ref) ref.textContent = 'B1'; if (fx) fx.textContent = '=OPEN(company, password)';
+    if (ref) ref.textContent = 'B15'; if (fx) fx.textContent = '=OPEN(company, password)';
     return true;
   }
   document.addEventListener('click', function (e) {
