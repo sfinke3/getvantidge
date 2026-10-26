@@ -3,107 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vantidge Security</title>
-  <meta name="description" content="How Vantidge keeps client data: a separate workspace per client, encrypted credentials with backups, two-step sign-in, US-only storage, and deletion within 30 days of the end of the service.">
-  <meta property="og:title" content="Vantidge security">
-  <meta property="og:description" content="A separate workspace per client, encrypted credentials, two-step sign-in, and US-only storage.">
+  <title>Security | Vantidge</title>
+  <meta name="description" content="Where your data goes when you work with Vantidge.">
+  <meta property="og:title" content="Security | Vantidge">
+  <meta property="og:description" content="Where your data goes when you work with Vantidge.">
   <meta property="og:url" content="https://getvantidge.com/security/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Vantidge">
   <meta property="og:image" content="https://getvantidge.com/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Vantidge. Strategic finance without the full-time hire.">
+  <meta property="og:image:alt" content="Vantidge. Your finance team, before you hire one.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://getvantidge.com/og.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23217346'/><text x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'>V</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css?v=12">
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css?v=4">
 </head>
 <body>
-<div class="app">
-  <div class="top">
-    <div class="title"><a class="brand" href="/">Vantidge</a><nav class="tnav"><a class="hide-sm" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="tsign" href="https://app.getvantidge.com">Sign in</a></nav></div>
-    <div class="fx"><div class="ref" id="ref">A1</div><div class="lbl">fx</div><div class="f" id="fx"></div></div>
-    <div class="colhdr" style="grid-template-columns:46px 1fr"><div></div><div>A</div></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr" id="hdr">
+  <div class="ttl"><div class="wrap">
+    <a class="logo" href="/"><i>V</i>Vantidge</a>
+    <span class="fname">Vantidge.xlsx<em>Saved</em></span>
+    <div class="right">
+      <a class="sign" href="https://app.getvantidge.com">Sign in</a>
+      <a class="btn sm book" href="https://calendly.com/sophie-getvantidge/30min">Book a call</a>
+    </div>
+  </div></div>
+  <nav class="ribbon" aria-label="Main"><div class="wrap">
+    <a href="/">Home</a>
+    <a href="/#included">What you get</a>
+    <a href="/diligence/">Diligence</a>
+    <a href="/case-study/">Case study</a>
+    <a href="/about/">About</a>
+  </div></nav>
+  <div class="fxrow"><div class="wrap"><span class="nb" id="ref">A1</span><span class="fl">fx</span><span class="fv" id="fx"></span></div></div>
+</header>
+
+<main id="main">
+  <div class="page">
+    <div class="wrap">
+      <h1>Security</h1>
+      <p class="lede">You're handing us your bank, your books and your billing. Here's where they go.</p>
+
+      <h2>Who can see your data</h2>
+      <p>Your company gets its own workspace and its own warehouse. Nobody else's queries can reach it. Tests check that on every code change, and a change that fails them can't ship.</p>
+      <p>People get in by invitation only. Two-step sign-in is required once a bank or card is connected. Vantidge can see your workspace because we run it, and your team page says so.</p>
+      <p>Your data builds your reports and your model. It isn't sold, used for ads or shared with another client.</p>
+
+      <h2>Your logins and keys</h2>
+      <p>Keys are stored encrypted in Google Secret Manager and never sent back to a browser. You'll only ever see the last 4 characters.</p>
+      <p>Banks connect through Plaid and QuickBooks through Intuit's own sign-in. You never give us a bank password.</p>
+      <p>Disconnect a system and its key stops working right away.</p>
+
+      <h2>Where it lives</h2>
+      <p>Google Cloud and Firebase, in the United States, encrypted in transit and at rest. Client data doesn't go to laptops, email or chat. The one exception is an export you ask for, and that's deleted once it's delivered.</p>
+
+      <h2>When you leave</h2>
+      <p>You get an export of your model and data if you want it. Then we delete the workspace, the keys and the warehouse, revoke the Plaid and QuickBooks connections and send you written confirmation.</p>
+
+      <h2>Who we use</h2>
+      <p>Google Cloud and Firebase, Fivetran, Plaid, Intuit, GitHub and Slack (for our own alerts). We check each one for a SOC 2 report or equivalent before we add it.</p>
+
+      <p style="margin-top:40px">Want the written policies, or found a problem? Email <a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a>. See also the <a href="/privacy/">privacy policy</a> and <a href="/terms/">terms</a>.</p>
+    </div>
   </div>
-  <div class="sheet sec">
-    <div class="rn">1</div>
-    <div class="row" data-ref="A1" data-fx="=&quot;Security&quot;"><div class="cell" tabindex="0" data-fx="=&quot;Security&quot;"><h1>Security</h1><p class="lede">Connecting your bank, your ledger and your billing system means trusting someone with them. This page sets out how that data is kept.</p></div></div>
+</main>
 
-    <div class="rn">2</div>
-    <div class="row bar" data-ref="A2" data-fx="=ISOLATE(client)">Your data stays yours</div>
-    <div class="rn">3</div>
-    <div class="row" data-ref="A3" data-fx="=ISOLATE(client)"><div class="cell" tabindex="0" data-fx="=ISOLATE(client)"><ul>
-      <li>Each client gets its own workspace, its own warehouse dataset, and its own access account. Your queries run as your account and can't reach anyone else's data.</li>
-      <li>The database rules that keep clients apart are tested automatically on every change to the code. A change that breaks them can't ship.</li>
-      <li>Your data is used only to build your reports, model and checks. It is never sold, used for advertising, or shared with another client.</li>
-    </ul></div></div>
-
-    <div class="rn">4</div>
-    <div class="row bar" data-ref="A4" data-fx="=SECRET(key, encrypted = TRUE)">Keys and logins</div>
-    <div class="rn">5</div>
-    <div class="row" data-ref="A5" data-fx="=SECRET(key, encrypted = TRUE)"><div class="cell" tabindex="0" data-fx="=SECRET(key, encrypted = TRUE)"><ul>
-      <li>Keys and logins you enter are stored encrypted in Google Secret Manager. They are never sent back to a browser. The console shows only the last 4 characters.</li>
-      <li>Each key is backed up when it is saved. Every day a check confirms the backup matches, the key still works, and whether it is close to expiring.</li>
-      <li>Bank connections go through Plaid, and QuickBooks through Intuit's own sign-in, so you never hand over a bank password.</li>
-      <li>Disconnecting a system switches its key off straight away.</li>
-    </ul></div></div>
-
-    <div class="rn">6</div>
-    <div class="row bar" data-ref="A6" data-fx="=ACCESS(role, two_step = TRUE)">Who can see what</div>
-    <div class="rn">7</div>
-    <div class="row" data-ref="A7" data-fx="=ACCESS(role, two_step = TRUE)"><div class="cell" tabindex="0" data-fx="=ACCESS(role, two_step = TRUE)"><ul>
-      <li>Access is by invitation only. Everyone has one role (admin, editor, viewer, board, or connector), and the role is enforced on the server, not just hidden in the page.</li>
-      <li>Two-step sign-in with an authenticator app is required for everyone at a company with a bank or card connection.</li>
-      <li>Vantidge has full access to your workspace, because running the service requires it. Your team page says so, and it lists everyone else who has access, their role, and who invited them.</li>
-      <li>Every change to your users, roles, keys and model is written to your audit log.</li>
-    </ul></div></div>
-
-    <div class="rn">8</div>
-    <div class="row bar" data-ref="A8" data-fx="=LOCATION(&quot;United States&quot;)">Where it lives</div>
-    <div class="rn">9</div>
-    <div class="row" data-ref="A9" data-fx="=LOCATION(&quot;United States&quot;)"><div class="cell" tabindex="0" data-fx="=LOCATION(&quot;United States&quot;)"><ul>
-      <li>Everything runs on Google Cloud and Firebase, in the United States. A policy on the account refuses to create anything outside US locations.</li>
-      <li>Data is encrypted in transit and at rest.</li>
-      <li>Client data isn't copied to laptops, email or chat. The one exception is an export you ask for, which is deleted once it's delivered.</li>
-    </ul></div></div>
-
-    <div class="rn">10</div>
-    <div class="row bar" data-ref="A10" data-fx="=REVIEW(change)">How changes ship</div>
-    <div class="rn">11</div>
-    <div class="row" data-ref="A11" data-fx="=REVIEW(change)"><div class="cell" tabindex="0" data-fx="=REVIEW(change)"><ul>
-      <li>Every change is reviewed line by line before it merges, and it runs a secret scan, type checks, tests and the isolation tests first.</li>
-      <li>Production deploys only from reviewed code, after the change has run on a separate development project that uses test credentials.</li>
-      <li>Dependencies are checked weekly. Critical security fixes are applied within 7 days.</li>
-      <li>Failed syncs, numbers that don't tie, and keys that stop working raise an alert the same day.</li>
-    </ul></div></div>
-
-    <div class="rn">12</div>
-    <div class="row bar" data-ref="A12" data-fx="=DELETE(client_data, days = 30)">When you leave</div>
-    <div class="rn">13</div>
-    <div class="row" data-ref="A13" data-fx="=DELETE(client_data, days = 30)"><div class="cell" tabindex="0" data-fx="=DELETE(client_data, days = 30)"><ul>
-      <li>You get an export of your model and data if you want one.</li>
-      <li>Within 30 days of the end of the service, everything is deleted: your users' access, every key and its backup, your warehouse dataset and your workspace. Plaid and QuickBooks connections are revoked at the provider.</li>
-      <li>Backups age out within 14 days after that. You get written confirmation once it's done.</li>
-    </ul></div></div>
-
-    <div class="rn">14</div>
-    <div class="row bar" data-ref="A14" data-fx="=PROVIDERS()">Providers</div>
-    <div class="rn">15</div>
-    <div class="row" data-ref="A15" data-fx="=PROVIDERS()"><div class="cell" tabindex="0" data-fx="=PROVIDERS()"><p>Google Cloud and Firebase (hosting, database, warehouse, secrets), Fivetran (QuickBooks copies), Plaid (bank and card connections), Intuit (the QuickBooks app), GitHub (code) and Slack (internal alerts). Each one is checked for a SOC 2 report or equivalent before it's added, and reviewed every year.</p></div></div>
-
-    <div class="rn">16</div>
-    <div class="row" data-ref="A16" data-fx="=EMAIL(&quot;security&quot;)"><div class="cell" tabindex="0" data-fx="=EMAIL(&quot;security&quot;)"><p>The full written policies on information security, access control and data retention are available on request. To report a security issue or ask a question, email <a href="mailto:sophie@getvantidge.com?subject=Security">sophie@getvantidge.com</a>. See also the <a href="/privacy/">privacy policy</a> and <a href="/terms/">terms</a>.</p></div></div>
-    <div class="rn">17</div><div class="row" style="min-height:44px"></div>
+<footer class="ftr">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="/"><i>V</i>Vantidge</a>
+      <p style="margin-top:12px">Your finance team, before you hire one.</p>
+      <p style="margin-top:6px"><a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a></p>
+    </div>
+    <div class="links">
+      <a href="/#included">What you get</a><a href="/diligence/">Diligence</a>
+      <a href="/case-study/">Case study</a><a href="/about/">About</a>
+      <a href="https://app.getvantidge.com">Client sign in</a>
+    </div>
+    <div class="door" id="door">
+      <h4>Got a preview from us?</h4>
+      <p class="small">Sometimes we build one for a company before we've talked. Open yours here.</p>
+      <form id="f" autocomplete="off">
+        <input id="co" name="co" placeholder="Company" aria-label="Company" required>
+        <input id="pw" name="pw" type="password" placeholder="Password" aria-label="Password" required>
+        <button class="btn go sm" type="submit" id="go">Open</button>
+        <p id="msg" role="status"></p>
+      </form>
+      <p class="small" style="margin-top:6px">No password? <a id="ask" href="mailto:sophie@getvantidge.com">Ask for one</a>.</p>
+    </div>
+    <div class="bottom"><span>&copy; 2026 Vantidge &nbsp;&middot;&nbsp; <a href="/security/">Security</a> &nbsp;&middot;&nbsp; <a href="/privacy/">Privacy</a> &nbsp;&middot;&nbsp; <a href="/terms/">Terms</a></span><span>Made in a spreadsheet, more or less.</span></div>
   </div>
-  <div class="bottom">
-    <div class="tabs"><a href="/">Home</a><a href="/#how">How it works</a><a href="/case-study/">Case study</a><a class="on" href="/security/">Security</a><a href="/about/">About</a><a href="/#door">Open your preview</a></div>
-    <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span></div>
-  </div>
-</div>
-<script src="/xl.js?v=12"></script>
+</footer>
+
+<div class="sbar"><div class="wrap"><span id="stat">Ready</span><span class="r"><span id="agg"></span><a href="https://calendly.com/sophie-getvantidge/30min">Book a call</a><span>100%</span></span></div></div>
+
+<script src="/see-your-company/specs.js?v=12"></script>
+<script src="/door.js?v=12"></script>
+<script src="/site.js?v=3"></script>
 </body>
 </html>
