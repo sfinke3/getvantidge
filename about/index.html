@@ -4,51 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Vantidge</title>
-  <meta name="description" content="Sophie Finke runs Vantidge. RBC index trading desk, Wharton MBA, and Playground's sale with no banker.">
-  <meta property="og:title" content="About Sophie Finke">
-  <meta property="og:description" content="RBC index trading desk, Wharton MBA, and Playground's sale with no banker.">
+  <meta name="description" content="We&#x27;re the finance team for startups that don&#x27;t have one yet.">
+  <meta property="og:title" content="About Vantidge">
+  <meta property="og:description" content="We&#x27;re the finance team for startups that don&#x27;t have one yet.">
   <meta property="og:url" content="https://getvantidge.com/about/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Vantidge">
   <meta property="og:image" content="https://getvantidge.com/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Vantidge. Strategic finance without the full-time hire.">
+  <meta property="og:image:alt" content="Vantidge. Your finance team, before you hire one.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://getvantidge.com/og.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23217346'/><text x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'>V</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/xl.css?v=12">
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css?v=4">
 </head>
 <body>
-<div class="app">
-  <div class="top">
-    <div class="title"><a class="brand" href="/">Vantidge</a><nav class="tnav"><a class="hide-sm" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="tsign" href="https://app.getvantidge.com">Sign in</a></nav></div>
-    <div class="fx"><div class="ref" id="ref">A1</div><div class="lbl">fx</div><div class="f" id="fx"></div></div>
-    <div class="colhdr" style="grid-template-columns:46px 1fr"><div></div><div>A</div></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr" id="hdr">
+  <div class="ttl"><div class="wrap">
+    <a class="logo" href="/"><i>V</i>Vantidge</a>
+    <span class="fname">Vantidge.xlsx<em>Saved</em></span>
+    <div class="right">
+      <a class="sign" href="https://app.getvantidge.com">Sign in</a>
+      <a class="btn sm book" href="https://calendly.com/sophie-getvantidge/30min">Book a call</a>
+    </div>
+  </div></div>
+  <nav class="ribbon" aria-label="Main"><div class="wrap">
+    <a href="/">Home</a>
+    <a href="/#included">What you get</a>
+    <a href="/diligence/">Diligence</a>
+    <a href="/case-study/">Case study</a>
+    <a class="on" href="/about/" aria-current="page">About</a>
+  </div></nav>
+  <div class="fxrow"><div class="wrap"><span class="nb" id="ref">A1</span><span class="fl">fx</span><span class="fv" id="fx"></span></div></div>
+</header>
+
+<main id="main">
+  <div class="page">
+    <div class="wrap">
+      <h1>About Vantidge</h1>
+      <p class="lede">We're the finance team for startups that don't have one yet.</p>
+
+      <p>In September we read the org charts of 45 New York startups. Four had a CFO, and three of those were already past Series B. Everyone else was running finance out of a bookkeeper and the founder's evenings.</p>
+      <p>That's who we work for. We build the model on your real books, connect the systems behind it and keep it current every month. When a raise or a sale shows up, we run the diligence off the same numbers.</p>
+
+      <p>Vantidge was founded by Sophie Finke, who ran the finance side of <a href="/case-study/">Playground's sale</a>. <a href="https://www.linkedin.com/in/sophie-finke-886490b0/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
   </div>
-  <div class="sheet">
-    <div class="rn">1</div>
-    <div class="row" data-ref="A1" data-fx="=PERSON(&quot;Sophie Finke&quot;)"><div class="cell" tabindex="0" data-fx="=PERSON(&quot;Sophie Finke&quot;)"><h1>Sophie Finke</h1><p class="lede">Founder of Vantidge, based in New York.</p><p>Sophie spent over three years on RBC's index trading desk, where she automated trading processes in Python and kdb+/q. After a Wharton MBA she led the finance work behind Playground's sale to Procare Solutions, with no banker. Vantidge brings that same mix of finance and engineering to companies that don't have a finance team yet.</p></div></div>
-    <div class="rn">2</div>
-    <div class="row bar" data-ref="A2" data-fx="=FILTER(career, relevant = TRUE)">Experience</div>
-    <div class="rn">3</div>
-    <div class="row" data-ref="A3" data-fx="=FILTER(career, relevant = TRUE)"><div class="cell" tabindex="0" data-fx="=FILTER(career, relevant = TRUE)"><table class="tbl"><thead><tr><th>Where</th><th>What</th></tr></thead><tbody><tr><td><b>Playground</b></td><td>Led the deal team for the sale to Procare Solutions, part of Roper Technologies. Built the operating model, the diligence materials, and the tools we ran the deal on. <a href="/case-study/">Case study</a></td></tr><tr><td><b>Wharton</b></td><td>MBA, graduated May 2026.</td></tr><tr><td><b>Amazon</b></td><td>A summer building forecast models and data pipelines for advertising finance.</td></tr><tr><td><b>RBC Capital Markets</b></td><td>Over three years on the index desk. Automated trading processes in Python and kdb+/q, managed desk-wide funding, and built real-time monitoring tools that were adopted firmwide during the SVB crisis.</td></tr><tr><td><b>Georgia Tech</b></td><td>Electrical engineering.</td></tr></tbody></table></div></div>
-    <div class="rn">4</div>
-    <div class="row bar" data-ref="A4" data-fx="=AND(SIE, series_7, series_57)">Credentials</div>
-    <div class="rn">5</div>
-    <div class="row" data-ref="A5" data-fx="=AND(SIE, series_7, series_57)"><div class="cell" tabindex="0" data-fx="=AND(SIE, series_7, series_57)"><div class="nums" style="max-width:520px"><span>Wharton MBA</span><span class="v"><span>2026</span></span><span>Georgia Tech, electrical engineering</span><span class="v"><span>BS</span></span><span>FINRA licenses (former)</span><span class="v"><span>SIE, 7, 57</span></span></div></div></div>
-    <div class="rn">6</div>
-    <div class="row" data-ref="A6" data-fx="=EMAIL(&quot;Sophie&quot;)"><div class="cell" tabindex="0" data-fx="=EMAIL(&quot;Sophie&quot;)"><p class="ctas"><a class="btn go" href="https://calendly.com/sophie-getvantidge/30min" target="_blank" rel="noopener">Book a call</a><a class="btn" href="mailto:sophie@getvantidge.com">Email</a><a class="btn" href="https://www.linkedin.com/in/sophie-finke-886490b0/" target="_blank" rel="noopener">LinkedIn</a></p><p class="muted small" style="margin-top:10px">Other projects at <a href="https://sophiefinke.com" target="_blank" rel="noopener">sophiefinke.com</a>.</p></div></div>
-    <div class="rn">7</div><div class="row" style="min-height:44px"></div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Thirty minutes, no spreadsheets required.</h2>
+      <p>Tell us what's coming up. We'll tell you what we'd build first.</p>
+      <div class="ctas">
+        <a class="btn go" href="https://calendly.com/sophie-getvantidge/30min">Book a 30-minute call</a>
+        <a class="btn" href="mailto:sophie@getvantidge.com">Email us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="/"><i>V</i>Vantidge</a>
+      <p style="margin-top:12px">Your finance team, before you hire one.</p>
+      <p style="margin-top:6px"><a href="mailto:sophie@getvantidge.com">sophie@getvantidge.com</a></p>
+    </div>
+    <div class="links">
+      <a href="/#included">What you get</a><a href="/diligence/">Diligence</a>
+      <a href="/case-study/">Case study</a><a href="/about/">About</a>
+      <a href="https://app.getvantidge.com">Client sign in</a>
+    </div>
+    <div class="door" id="door">
+      <h4>Got a preview from us?</h4>
+      <p class="small">Sometimes we build one for a company before we've talked. Open yours here.</p>
+      <form id="f" autocomplete="off">
+        <input id="co" name="co" placeholder="Company" aria-label="Company" required>
+        <input id="pw" name="pw" type="password" placeholder="Password" aria-label="Password" required>
+        <button class="btn go sm" type="submit" id="go">Open</button>
+        <p id="msg" role="status"></p>
+      </form>
+      <p class="small" style="margin-top:6px">No password? <a id="ask" href="mailto:sophie@getvantidge.com">Ask for one</a>.</p>
+    </div>
+    <div class="bottom"><span>&copy; 2026 Vantidge &nbsp;&middot;&nbsp; <a href="/security/">Security</a> &nbsp;&middot;&nbsp; <a href="/privacy/">Privacy</a> &nbsp;&middot;&nbsp; <a href="/terms/">Terms</a></span><span>Made in a spreadsheet, more or less.</span></div>
   </div>
-  <div class="bottom">
-    <div class="tabs"><a href="/">Home</a><a href="/#how">How it works</a><a href="/case-study/">Case study</a><a href="/security/">Security</a><a class="on" href="/about/">About</a><a href="/#door">Open your preview</a></div>
-    <div class="status"><span id="stat">Ready</span><span class="r"><span id="agg"></span><span>sophie@getvantidge.com</span><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span></div>
-  </div>
-</div>
-<script src="/xl.js?v=12"></script>
+</footer>
+
+<div class="sbar"><div class="wrap"><span id="stat">Ready</span><span class="r"><span id="agg"></span><a href="https://calendly.com/sophie-getvantidge/30min">Book a call</a><span>100%</span></span></div></div>
+
+<script src="/see-your-company/specs.js?v=12"></script>
+<script src="/door.js?v=12"></script>
+<script src="/site.js?v=3"></script>
 </body>
 </html>
