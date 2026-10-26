@@ -12,22 +12,6 @@
     if (h === path || (h === '/' && path === '/')) { a.classList.add('on'); a.setAttribute('aria-current', 'page'); }
   });
 
-  /* hero headline rotates on each visit; booking links carry which one was shown */
-  var HEADS = [
-    "A finance team that's already been through a sale.",
-    "The model your board keeps asking for.",
-    "The finance team you were going to hire next year.",
-    "The finance hire, minus the hiring.",
-    "The numbers, every month. The deal, when it comes."
-  ];
-  var heroH = $('#heroH');
-  if (heroH) {
-    var hi = Math.floor(Math.random() * HEADS.length);
-    try { var last = +localStorage.getItem('vh'); if (!isNaN(last) && localStorage.getItem('vh') !== null) hi = (last + 1) % HEADS.length; localStorage.setItem('vh', hi); } catch (e) {}
-    heroH.textContent = HEADS[hi];
-    $$('a[href^="https://calendly.com/"]').forEach(function (a) { a.href += (a.href.indexOf('?') < 0 ? '?' : '&') + 'utm_source=site&utm_content=h' + (hi + 1); });
-  }
-
   /* typing formula bars */
   function typer(fxEl, refEl) {
     var t;
