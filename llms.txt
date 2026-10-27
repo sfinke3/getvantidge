@@ -1,0 +1,36 @@
+# Vantidge
+
+> Vantidge (getvantidge.com) is a strategic finance firm in New York for seed and Series A startups that don't have a CFO yet. It builds the operating model on a company's real books, keeps it current every month, and runs financial due diligence when a raise or a sale shows up. Founded by Sophie Finke. Legal entity: Phinke LLC.
+
+Vantidge is not Vantidge.ai, Vantage, or VantageScore.
+
+## What Vantidge does
+
+- Operating model tied to the company's actual books, first version within a week, with live formulas and a full Excel download
+- Ledger, bank, billing and payroll connected and refreshed every night (QuickBooks Online, Mercury, Stripe, Bill.com, HubSpot and others), with mismatches flagged
+- Dashboards shared by the founders and the board
+- Month-end rolled into the model and a draft board deck
+- Raise math: how much to raise and what it does to founder ownership
+- Diligence war room for a fundraise or a company sale: data room, request tracker, written answers and Vantidge on the diligence calls
+- Pricing: one monthly price set by scope, in writing after a 30-minute call
+
+## Who it is for
+
+Startups that need finance but have no finance team. In September 2026 Vantidge read the org charts of 45 New York startups and four had a CFO. Three of those were past Series B.
+
+## Proof
+
+Playground sold to Procare, a Roper Technologies company, in September 2026 with no banker and no finance team. The buyer had three consulting firms. Vantidge's founder ran the finance side: 439 diligence requests, 714 files, 27 diligence calls.
+
+## Pages
+
+- [Home](https://getvantidge.com/): the offer, what's included, how it compares to a finance hire or a fractional CFO, FAQ
+- [Strategic finance](https://getvantidge.com/strategic-finance/): strategic finance for startups without a CFO, who it's for, how it compares, pricing
+- [Diligence](https://getvantidge.com/diligence/): due diligence for a Series A or a sale, with or without a banker
+- [Playground case study](https://getvantidge.com/case-study/): a startup sale with no banker
+- [About](https://getvantidge.com/about/): Vantidge and founder Sophie Finke
+- [Security](https://getvantidge.com/security/): where client data goes
+
+## Contact
+
+sophie@getvantidge.com. Book a call: https://calendly.com/sophie-getvantidge/30min
